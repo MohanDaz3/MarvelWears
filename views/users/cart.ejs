@@ -411,6 +411,12 @@
         <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
           <div class="m-l-25 m-r--38 m-lr-0-xl">
             <div class="wrap-table-shopping-cart">
+              <div
+                id="cart-info"
+                hidden
+                data-cart-id="<%=cart._id%>"
+                data-user-id="<%=cart.userid%>"
+              ></div>
               <table id="cartTable" class="table-shopping-cart">
                 <thead>
                   <tr class="table_head">
@@ -422,10 +428,15 @@
                     <th class="column-6"></th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="main-table-body">
                   <% cart.products.forEach((product) => { %>
                   <tr class="table_row">
                     <td class="column-1">
+                      <!-- PRODUCT ID -->
+                      <div
+                        class="item-product-info"
+                        data-product-id="<%=product.productid._id%>"
+                      ></div>
                       <div class="how-itemcart1 product">
                         <img
                           src="/static/uploads/<%=product.productid.productimage[0]%>"
@@ -476,76 +487,91 @@
                     </td>
                     <td class="column-5 total-col amount"></td>
                     <td class="remove-col">
-                      <a href="#" class="btn-remove">
+                      <button class="btn-remove">
                         <i
                           class="zmdi zmdi-close m-r-25"
                           style="color: black"
                         ></i>
-                      </a>
+                      </button>
                     </td>
                   </tr>
                   <% }) %>
-                  <div id="table-row-outer">
-                    <tr class="table_row">
-                      <td class="column-1">
-                        <div class="how-itemcart1 product">
-                          <!-- PRODUCT IMAGE -->
-                          <img src="" alt="IMG" />
+                </tbody>
+              </table>
+
+              <table
+                id="template-table"
+                style="position: absolute; z-index: -100; opacity: 0"
+              >
+                <thead></thead>
+                <tbody>
+                  <tr class="table_row">
+                    <td class="column-1">
+                      <div class="how-itemcart1 product">
+                        <!-- PRODUCT ID -->
+                        <div class="item-product-info" data-product-id=""></div>
+                        <!-- PRODUCT IMAGE -->
+                        <img
+                          src="/static/uploads/"
+                          alt="IMG"
+                          class="item-image"
+                        />
+                      </div>
+                    </td>
+                    <!-- CART ID -->
+                    <input type="hidden" id="cartid" value="<%=cart._id%>" />
+                    <td class="column-2 product-title">
+                      <!-- PRODUCT NAME -->
+                      <span class="item-name"></span>
+                    </td>
+                    <td class="column-3 price">
+                      <!-- PRICE WITH DIGITS AFTER DECIMAL POINT-->
+                      <span class="item-price"></span>
+                    </td>
+                    <td class="column-4">
+                      <div class="wrap-num-product flex-w m-l-auto m-r-0">
+                        <!-- PRODUCT ID -->
+                        <div
+                          class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m cart-qty-minus item-product-id"
+                          data-proid=""
+                        >
+                          <i class="fs-16 zmdi zmdi-minus"></i>
                         </div>
-                      </td>
-                      <!-- CART ID -->
-                      <input type="hidden" id="cartid" value="" />
-                      <td class="column-2 product-title">
-                        <!-- PRODUCT NAME -->
-                      </td>
-                      <td class="column-3 price">
-                        <!-- PRICE WITH DIGITS AFTER DECIMAL POINT-->
-                      </td>
-                      <td class="column-4">
 
-                        <div class="wrap-num-product flex-w m-l-auto m-r-0">
-                          <!-- PRODUCT ID -->
-                          <div
-                            class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m cart-qty-minus"
-                            data-proid=""
-                          >
-                            <i class="fs-16 zmdi zmdi-minus"></i>
-                          </div>
+                        <!-- <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1"> -->
+                        <button
+                          class="qty"
+                          style="
+                            cursor: default;
+                            border: none;
+                            width: 48px;
+                            font-size: medium;
+                          "
+                          type="button"
+                        >
+                          <!-- QUANTITY -->
+                          <span class="item-quantity"></span>
+                        </button>
 
-                          <!-- <input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1"> -->
-                          <button
-                            class="qty"
-                            style="
-                              cursor: default;
-                              border: none;
-                              width: 48px;
-                              font-size: medium;
-                            "
-                            type="button"
-                          >
-                            <!-- QUANTITY -->
-                          </button>
-
-                          <!-- PRODUCT ID -->
-                          <div
-                            class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m cart-qty-plus"
-                            data-proid=""
-                          >
-                            <i class="fs-16 zmdi zmdi-plus"></i>
-                          </div>
+                        <!-- PRODUCT ID -->
+                        <div
+                          class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m cart-qty-plus item-product-id"
+                          data-proid=""
+                        >
+                          <i class="fs-16 zmdi zmdi-plus"></i>
                         </div>
-                      </td>
-                      <td class="column-5 total-col amount"></td>
-                      <td class="remove-col">
-                        <a href="#" class="btn-remove">
-                          <i
-                            class="zmdi zmdi-close m-r-25"
-                            style="color: black"
-                          ></i>
-                        </a>
-                      </td>
-                    </tr>
-                  </div>
+                      </div>
+                    </td>
+                    <td class="column-5 total-col amount"></td>
+                    <td class="remove-col">
+                      <button class="btn-remove">
+                        <i
+                          class="zmdi zmdi-close m-r-25"
+                          style="color: black"
+                        ></i>
+                      </button>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -984,13 +1010,6 @@
       </div>
     </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const cartItemTemplateOuter = document.getElementById('table-row-outer');
-        const itemTemplate = cartItemTemplateOuter.querySelector('.table_row');
-        console.log(itemTemplate);
-      })
-    </script>
     <!-- <script>
         $(document).ready(function () {
           update_amounts();
@@ -1087,64 +1106,185 @@
         $(".total").text("₹" + sum.toFixed(2));
       }
 
-      $(".cart-qty-plus").on("click", function () {
-        var pro = $(this).data("proid");
-        var input = $(this).siblings(".qty");
-        var cartid = $("#cartid").val();
-        $.ajax({
-          url:
-            "/increment?id=" +
-            pro +
-            "&val=" +
-            input.text() +
-            "&cartid=" +
-            cartid,
-          method: "GET",
-          success: function (response) {
-            if (response.message === "0") {
-              Swal.fire({
-                title: "Exceed",
-                text: "Product quantity exceeds available stock.",
-                icon: "error",
-                confirmButtonText: "OK",
-              });
-            } else {
-              var val = parseInt(input.text());
-              input.text(val + 1);
-              update_amounts();
-            }
-          },
+      const addEventListenersToIncrementDecrementButtons = () => {
+        $(".cart-qty-plus").on("click", function () {
+          var pro = $(this).data("proid");
+          var input = $(this).siblings(".qty");
+          var cartid = $("#cartid").val();
+          $.ajax({
+            url:
+              "/increment?id=" +
+              pro +
+              "&val=" +
+              input.text() +
+              "&cartid=" +
+              cartid,
+            method: "GET",
+            success: function (response) {
+              if (response.message === "0") {
+                Swal.fire({
+                  title: "Exceed",
+                  text: "Product quantity exceeds available stock.",
+                  icon: "error",
+                  confirmButtonText: "OK",
+                });
+              } else {
+                var val = parseInt(input.text());
+                input.text(val + 1);
+                update_amounts();
+              }
+            },
+          });
         });
-      });
 
-      $(".cart-qty-minus").on("click", function () {
-        var proid = $(this).data("proid");
-        var input = $(this).siblings(".qty");
-        var cartid = $("#cartid").val();
-        $.ajax({
-          url:
-            "/decrement?id=" +
-            proid +
-            "&val=" +
-            input.text() +
-            "&cartid=" +
-            cartid,
-          method: "GET",
-          success: function (response) {
-            if (response.message === "0") {
-              Swal.fire({
-                title: "Fall Short",
-                html: "Product quantity cannot be less than 1,<br> You can delete the product.",
-                icon: "error",
-                confirmButtonText: "OK",
-              });
-            } else {
-              var val = parseInt(input.text());
-              input.text(val - 1);
-              update_amounts();
-            }
-          },
+        $(".cart-qty-minus").on("click", function () {
+          var proid = $(this).data("proid");
+          var input = $(this).siblings(".qty");
+          var cartid = $("#cartid").val();
+          $.ajax({
+            url:
+              "/decrement?id=" +
+              proid +
+              "&val=" +
+              input.text() +
+              "&cartid=" +
+              cartid,
+            method: "GET",
+            success: function (response) {
+              if (response.message === "0") {
+                Swal.fire({
+                  title: "Fall Short",
+                  html: "Product quantity cannot be less than 1,<br> You can delete the product.",
+                  icon: "error",
+                  confirmButtonText: "OK",
+                });
+              } else {
+                var val = parseInt(input.text());
+                input.text(val - 1);
+                update_amounts();
+              }
+            },
+          });
         });
+      };
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        // ADD EVENT LISTENERS TO REMOVE BUTTONS -------------------
+        // This must be written inside a function because it has to be called again
+        // when the cart is reloaded.
+        const addEventListenersToRemoveButtons = () => {
+          const cartInfoEl = document.getElementById("cart-info");
+          const userId = cartInfoEl.dataset.userId;
+          const mainCartTable = document.getElementById("cartTable");
+          const mainCartItemRows = Array.from(
+            mainCartTable.querySelectorAll(".table_row")
+          );
+
+          mainCartItemRows.forEach((itemRow) => {
+            const productId =
+              itemRow.querySelector(".item-product-info").dataset.productId;
+            const removeButton = itemRow.querySelector(".btn-remove");
+
+            removeButton.addEventListener("click", async () => {
+              // Decrease the opacity to show that the item is being removed from the cart
+              mainCartTable.style.opacity = 0.5;
+
+              const resBody = await removeFromCart(userId, productId);
+              if (!resBody.isOk) {
+                console.error(resBody.error);
+                alert("Some error occured when deleting item from the cart");
+                return;
+              }
+              console.log("Item has been successfully deleted from the cart");
+              reloadCart(userId);
+
+              // Reset the opacity when the cart has been reloaded
+              mainCartTable.style.opacity = 1;
+            });
+          });
+        };
+
+        addEventListenersToRemoveButtons();
+
+        // RELOAD CART ------------------------
+        const templateTable = document.getElementById("template-table");
+        const itemTemplate = templateTable.querySelector(".table_row");
+
+        const createNewItemNode = (itemDataArg, itemTemplateArg) => {
+          const newItemNode = itemTemplateArg.cloneNode(true);
+          newItemNode.querySelector(
+            ".item-image"
+          ).src = `/static/uploads/${itemDataArg.productImage}`;
+          newItemNode.querySelector(".item-product-info").dataset.productId =
+            itemDataArg.productId;
+          newItemNode.querySelector(".item-name").innerText = itemDataArg.name;
+          newItemNode.querySelector(".item-price").innerText =
+            itemDataArg.price;
+          newItemNode.querySelector(".item-quantity").innerText =
+            itemDataArg.quantity;
+          newItemNode.querySelectorAll(".item-product-id").forEach((item) => {
+            item.dataset.proid = itemDataArg.productId;
+          });
+          return newItemNode;
+        };
+
+        const fetchCart = async (cartId) => {
+          const response = await fetch(`/carts/${cartId}`);
+          const resBody = await response.json();
+          if (!resBody.isOk) {
+            alert("Some error occurred when retrieving the cart");
+            return null;
+          }
+          return resBody.cart;
+        };
+
+        const createAllItemNodes = (itemsArg) => {
+          return itemsArg.map((itemData) =>
+            createNewItemNode(itemData, itemTemplate)
+          );
+        };
+
+        const getItems = (cart) => {
+          items = cart.products.map((product) => ({
+            productId: product.productid._id,
+            // Just in case if productimage array is empty
+            productImage: product.productid.productimage?.[0].toString(),
+            name: product.productid.productname,
+            price: product.productid.price.toFixed(2),
+            quantity: product.quantity,
+          }));
+
+          return items;
+        };
+
+        const reloadCart = async (userId) => {
+          const cart = await fetchCart(userId);
+          const items = getItems(cart);
+          const itemNodes = createAllItemNodes(items);
+          const mainTableBody = document.querySelector(".main-table-body");
+          mainTableBody.innerHTML = "";
+
+          itemNodes.forEach((itemNode) => {
+            mainTableBody.appendChild(itemNode);
+          });
+
+          // Update total
+          update_amounts();
+          addEventListenersToRemoveButtons();
+          addEventListenersToIncrementDecrementButtons();
+        };
+
+        // REMOVE FROM CART -------------------
+        const removeFromCart = async (userId, productId) => {
+          const response = await fetch(
+            `/carts/${userId}/products/${productId}`,
+            { method: "DELETE" }
+          );
+          const resBody = await response.json();
+          return resBody;
+        };
       });
     </script>
 

@@ -7,10 +7,11 @@ const bycrpt = require("bcrypt");
 const mongoose = require("mongoose");
 
 const cartGet = async (req, res) => {
+  const userid = new mongoose.Types.ObjectId(req.params.userId);
   try {
-    const cart = await Cart.findOne({
-      userid: new mongoose.Types.ObjectId(req.params.userId),
-    }).lean();
+    const cart = await Cart.findOne({ userid })
+      .populate("products.productid")
+      .lean();
 
     if (!cart) {
       res.send({ isOk: false, error: "No cart found for this user" });
@@ -21,6 +22,30 @@ const cartGet = async (req, res) => {
   } catch (err) {
     console.trace(err);
     res.send({ isOk: false, error: err.message });
+  }
+};
+
+const cartProductDelete = async (req, res) => {
+  const userid = new mongoose.Types.ObjectId(req.params.userId);
+  const productid = new mongoose.Types.ObjectId(req.params.productId);
+  try {
+    const updateResponse = await Cart.updateOne(
+      { userid },
+      {
+        $pull: {
+          products: { productid }
+        }
+      }
+    );
+
+    if (updateResponse.modifiedCount === 0) {
+      res.send({isOk: false, error: 'Cart or cart item does not exist'});
+      return;
+    }
+    res.send({isOk: true});
+  } catch(err) {
+    console.trace(err);
+    res.send({isOk: false, error: err.message});
   }
 };
 
@@ -263,4 +288,5 @@ module.exports = {
   deleteProCart,
   cartcheckout,
   validatecoupon,
+  cartProductDelete,
 };
