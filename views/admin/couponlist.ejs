@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <title>MW.com Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="/static/admin/imgs/theme/favicon.svg"> -->
+    <!-- Template CSS -->
+    <link href="/static/admin/css/main.css" rel="stylesheet" type="text/css" />
+    <style>
+        body{
+            background: rgb(126, 0, 0) !important;
+        }
+.logo {
+font-family: 'Arial', sans-serif;
+font-size: 24px;
+font-weight: bold;
+text-transform: uppercase;
+color: #ffffff;
+}
+
+.marvel {
+font-size: 30px;
+
+color: #000000; /* black color */
+}
+
+.wears {
+font-size: 30px;
+color: #ff0000;/* red color */
+}
+
+     </style>
+
+</head>
+
+<body>
+<div class="screen-overlay"></div>
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <!-- <a href="index.html" class="brand-wrap">
+            <img src="/static/admin/imgs/theme/marvel_logo.svg" class="logo" alt="Evara Dashboard">
+        </a> -->
+        <div class="logo">
+            <span class="marvel">Shop</span>
+            <span class="wears">Marvels</span>
+          </div>
+          
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu-aside">
+            <li class="menu-item active">
+                <a class="menu-link" href="/admin/dashboard"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item ">
+                <a class="menu-link" href="/admin/users"><i class="icon material-icons md-person"></i>
+                    <span class="text">users</span>
+                </a>
+                <!-- <div class="submenu">
+                    <a href="page-products-list.html">Product List</a>
+                    <a href="page-products-grid.html">Product grid</a>
+                    <a href="page-products-grid-2.html">Product grid 2</a>
+                    <a href="page-categories.html">Categories</a>
+                </div> -->
+            </li>
+            <li class="menu-item ">
+                <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Orders</span>
+                </a>
+                <!-- <div class="submenu">
+                    <a href="page-orders-1.html">Order list 1</a>
+                    <a href="page-orders-2.html">Order list 2</a>
+                    <a href="page-orders-detail.html">Order detail</a>
+                </div> -->
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="page-sellers-cards.html"><i class="icon material-icons md-shopping_bag"></i>
+                     <!-- <i class="icon material-icons md-store"></i> -->
+                    <span class="text">Products</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/productlist">Product List</a>
+                    <a href="/admin/addproduct">Add products</a>
+                    <!-- <a href="page-seller-detail.html">Seller profile</a> -->
+                </div>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="/admin/addcategory"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Categories</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/categorylist">Category list</a>
+                    <a href="/admin/addcategory">Add Category</a>
+                    <!-- <a href="page-form-product-3.html">Add product 3</a>
+                    <a href="page-form-product-4.html">Add product 4</a> -->
+                </div>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-local_offer"></i>
+                    <span class="text">Coupons</span>
+                </a>
+                <!-- <div class="submenu">
+                    <a href="page-transactions-1.html">Transaction 1</a>
+                    <a href="page-transactions-2.html">Transaction 2</a>
+                </div> -->
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-local_offer"></i>
+                    <span class="text">Banner</span>
+                </a>
+                <div class="submenu">
+                    <a href="page-account-login.html">User login</a>
+                    <a href="page-account-register.html">User registration</a>
+                    <a href="page-error-404.html">Error 404</a>
+                </div>
+            </li>
+            <!-- <li class="menu-item">
+                <a class="menu-link" href="page-reviews.html"> <i class="icon material-icons md-comment"></i>
+                    <span class="text">Reviews</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="page-brands.html"> <i class="icon material-icons md-stars"></i>
+                    <span class="text">Brands</span> </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                    <span class="text">Statistics</span>
+                </a>
+            </li> -->
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Settings</span>
+                </a>
+                <!-- <div class="submenu">
+                    <a href="page-settings-1.html">Setting sample 1</a>
+                    <a href="page-settings-2.html">Setting sample 2</a>
+                </div> -->
+            </li>
+            <!-- <li class="menu-item">
+                <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                    <span class="text"> Starter page </span>
+                </a>
+            </li> -->
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+
+    <main class="main-wrap">
+        <header class="main-header navbar">
+            <div class="col-search">
+                <form class="searchform">
+                    <!-- <div class="input-group">
+                        <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                        <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+                    </div> -->
+                    <datalist id="search_terms">
+                        <option value="Products">
+                        <option value="New orders">
+                        <option value="Apple iphone">
+                        <option value="Ahmed Hassan">
+                    </datalist>
+                </form>
+            </div>
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link btn-icon" href="#">
+                            <i class="material-icons md-notifications animation-shake"></i>
+                            <span class="badge rounded-pill">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+                    </li> -->
+                    <!-- <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage" aria-expanded="false"><i class="material-icons md-public"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                            <a class="dropdown-item text-brand" href="#"><img src="/static/admin/imgs/theme/flag-us.png" alt="English">English</a>
+                            <a class="dropdown-item" href="#"><img src="/static/admin/imgs/theme/flag-fr.png" alt="Français">Français</a>
+                            <a class="dropdown-item" href="#"><img src="/static/admin/imgs/theme/flag-jp.png" alt="Français">日本語</a>
+                            <a class="dropdown-item" href="#"><img src="/static/admin/imgs/theme/flag-cn.png" alt="Français">中国人</a>
+                        </div>
+                    </li> -->
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="" alt="Admin"></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                            <!-- <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-account_balance_wallet"></i>Wallet</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a> -->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <section class="content-main">
+            <div class="content-header">
+            <div>
+                <h2 class="content-title">Coupons List</h2>
+                <p style="color: darkgreen;"><%=error%></p>
+            </div>
+                <div>                
+                  <a href="/admin/addcoupon" type="submit" class="btn btn-primary btn-sm rounded">Add Coupon</a>
+                </div>
+            </div>
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-hover" id="usertable" >
+                    <thead>
+                      <tr>
+                        <th>Code</th>
+                        <th>Discount Price</th>
+                        <th>Min Purchase</th>
+                        <th>Expiry</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% coupons.forEach((coupon) => { %>
+                        <tr>
+                          <td width="17%">
+                            <h6  class="mb-0 title"> <%-coupon.couponCode %> </h6>
+                          </td>
+                          <td width="17%">
+                            <h6 class="mb-0 title">₹ <%-coupon.couponAmount %></h6>
+                          </td>
+                          <td width="17%">
+                            <h6 class="mb-0 title">₹ <%-coupon.minimumAmount %></h6>
+                          </td>
+                          <td width="17%">
+                            <h6 class="mb-0 title"> <%=new Date(coupon.expireDate).toLocaleDateString()%></h6>
+                          </td>
+                          <td width="17%">
+                            <div class="">
+                              <a href="/admin/editcouponpage?id=<%=coupon._id %>" type="submit" class="btn btn-sm font-sm rounded btn-brand">
+                                <i class="material-icons md-edit"></i> Edit
+                              </a>
+                            </div>
+                          </td>
+                          <td width="17%">
+                            <div class="">
+                                <!-- <a href="/admin/deletecoupon?id=" type="submit" class="btn btn-sm font-sm btn-light rounded">
+                                    <i class="material-icons md-delete_forever"></i> Delete
+                                </a> -->
+                                <!-- <button id="coupondeletebtn-<%=coupon._id %>"   data-couponid="<%= coupon._id %>" class="coupondeletebtn btn btn-sm font-sm btn-light rounded ">Delete</button> -->
+                                <a href="/admin/deletecoupon?id=<%=coupon._id %>" type="submit" class="btn btn-sm font-sm rounded btn-brand">
+                                    <i class="material-icons md-delete_forever"></i> Delete
+                                  </a>
+                            </div>
+                          </td>
+                        </tr>
+                      <% }) %>
+                    </tbody>
+                  </table> <!-- table-responsive.// -->
+                </div>
+              </div> <!-- card-body end// -->
+            </div> <!-- card end// -->
+          
+            <!-- <div class="pagination-area mt-30 mb-50">
+                          <nav aria-label="Page navigation example">
+                              <ul class="pagination justify-content-start">
+                                  <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                  <li class="page-item"><a class="page-link dot" href="#">...</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">16</a></li>
+                                  <li class="page-item"><a class="page-link" href="#"><i class="material-icons md-chevron_right"></i></a></li>
+                              </ul>
+                          </nav>
+                      </div> -->
+          </section>
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©,Marvel Wears.com
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script src="/static/admin/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/static/admin/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/static/admin/js/vendors/select2.min.js"></script>
+    <script src="/static/admin/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/static/admin/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/static/admin/js/main.js" type="text/javascript"></script>
+
+        <!-- SweetAlert CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+
+<!-- SweetAlert JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+
+
+
+    <script>
+      
+        
+$(document).ready(function() {
+  $('.block-button').click(function() {
+    var button = $(this);
+    var productId = button.data('productid');
+    console.log(productId)
+    var blockStatus = button.data('blockstatus');
+    var url = '';
+
+    if (blockStatus == false) {
+      url = '/admin/enableproduct?id=' + productId;
+    } else {
+      url = '/admin/disableproduct?id=' + productId;
+    }
+
+    // Show SweetAlert confirmation dialog
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This action cannot be undone.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Send Ajax request
+        $.ajax({
+          url: url,
+          type: 'POST',
+          success: function(response) {
+            console.log(response.message);
+            // Update the button text and data attributes
+            if (blockStatus == false) {
+              button.removeClass('btn-brand').addClass('btn-danger').text('Unblock');
+              button.data('blockstatus', true);
+            } else {
+              button.removeClass('btn-danger').addClass('btn-info').text('Block');
+              button.data('blockstatus', false);
+            }
+            // Show success message
+            Swal.fire({
+              title: 'Success',
+              text: 'Product has been ' + (blockStatus == false ? 'Unblocked' : 'Blocked') + '.',
+              icon: 'success',
+              timer: 2000,
+              showConfirmButton: false
+            });
+          },
+          error: function(error) {
+            console.log('Error: ' + error);
+          }
+        });
+      }
+    });
+  });
+});
+
+
+
+    </script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script> -->
+
+<script>
+    $(document).ready(function() {
+        $('.table-hover').DataTable();
+      });
+      
+    </script>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>MW Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--===============================================================================================-->
+    <!-- <link rel="icon" type="image/png" href="/static/images/icons/favicon.png"> -->
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/vendor/bootstrap/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/fonts/font-awesome-4.7.0/css/font-awesome.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/fonts/iconic/css/material-design-iconic-font.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/fonts/linearicons-v1.0.0/icon-font.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/vendor/animate/animate.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/vendor/css-hamburgers/hamburgers.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/vendor/animsition/css/animsition.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/vendor/select2/select2.min.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/vendor/daterangepicker/daterangepicker.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/vendor/slick/slick.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/vendor/MagnificPopup/magnific-popup.css"
+    />
+    <!--===============================================================================================-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/vendor/perfect-scrollbar/perfect-scrollbar.css"
+    />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/static/css/util.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+    <!-- profile link -->
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/public/admin/imgs/theme/favicon.svg"
+    />
+    <link href="/static/admin/css/main.css" rel="stylesheet" type="text/css" />
+    <!-- ends -->
+    <link rel="stylesheet" href="/static/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!--===============================================================================================-->
+    <style>
+      body::after {
+        content: "";
+        background-image: url(/public/images/);
+        background-size: cover;
+        background-position: center;
+        opacity: 0.8;
+        /* Adjust the opacity value as per your preference */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      b {
+        color: black;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tbody tr:hover {
+        background-color: #f5f5f5;
+      }
+
+      /* #preloader {
+      background: #ffffff url(/public/images/c1bcd8a8c945b53da6b29f10a2a553c0.gif) no-repeat center center;
+      background-size: 30%;
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      z-index: 100;
+    } */
+
+      .card1 {
+        width: 100%;
+        height: 80%;
+        border-radius: 20px;
+        background: #e0e0e0;
+        box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+      }
+
+      .card1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card-body {
+        width: 100%;
+      }
+
+      @media (max-width: 767px) {
+        .card1 {
+          margin: 20px 0;
+        }
+
+        .table-responsive {
+          overflow-x: auto;
+        }
+
+        .card-body {
+          padding: 10px;
+        }
+
+        table {
+          width: 100%;
+          table-layout: fixed;
+        }
+      }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        table {
+          width: 90%;
+          margin-left: auto;
+          margin-right: auto;
+          table-layout: fixed;
+        }
+      }
+    </style>
+  </head>
+  <body class="animsition">
+    <!-- Header -->
+    <header>
+      <!-- Header desktop -->
+      <div class="container-menu-desktop">
+        <!-- Topbar -->
+        <div class="top-bar">
+          <div class="content-topbar flex-sb-m h-full container">
+            <div class="left-top-bar">
+              Free shipping for standard order over $100
+            </div>
+
+            <div class="right-top-bar flex-w h-full">
+              <a href="#" class="flex-c-m trans-04 p-lr-25"> Help & FAQs </a>
+
+              <!-- <li class="account">
+                            <a href="#">
+                                My Account
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="account_selection">
+                                <li><a href="#login"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+                                <li><a href="#signup"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+                            </ul>
+                        </li> -->
+
+              <li class="language" style="background: none">
+                <a href="#">
+                  English
+                  <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="language_selection">
+                  <li><a href="#">French</a></li>
+                  <li><a href="#">Italian</a></li>
+                  <li><a href="#">German</a></li>
+                  <li><a href="#">Spanish</a></li>
+                </ul>
+              </li>
+
+              <li class="currency" style="background: none">
+                <a href="#">
+                  INR
+                  <i class="fa fa-angle-down"></i>
+                </a>
+                <ul class="currency_selection">
+                  <li><a href="#">USD</a></li>
+                  <li><a href="#">AUD</a></li>
+                  <li><a href="#">EUR</a></li>
+                  <li><a href="#">GBP</a></li>
+                </ul>
+              </li>
+            </div>
+          </div>
+        </div>
+
+        <div class="wrap-menu-desktop">
+          <nav class="limiter-menu-desktop container">
+            <!-- Logo desktop -->
+            <!-- <a href="#" class="logo">
+						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
+					</a> -->
+            <div class="logo_container">
+              <a href="#">Shop<span>Marvels</span></a>
+            </div>
+
+            <!-- Menu desktop -->
+            <div class="menu-desktop">
+              <ul class="main-menu">
+                <li>
+                  <a href="/">Home</a>
+                </li>
+                <li class="active-menu">
+                  <a href="index.html">Shop</a>
+                  <ul class="sub-menu">
+                    <% category.forEach(function(data) { %>
+
+                    <li><a href=""><%=data.categoryname%></a></li>
+
+                    <% }) %>
+                    <!--  -->
+                  </ul>
+                </li>
+
+                <li class="label1" data-label1="hot">
+                  <a href="shoping-cart.html">Features</a>
+                </li>
+
+                <!-- <li>
+								<a href="blog.html">Blog</a>
+							</li> -->
+
+                <li>
+                  <a href="about.html">About</a>
+                </li>
+
+                <li>
+                  <a href="contact.html">Contact</a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m">
+              <div
+                class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search"
+              >
+                <i class="zmdi zmdi-search"></i>
+              </div>
+
+              <div
+                class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                data-notify="0"
+              >
+                <i class="zmdi zmdi-shopping-cart"></i>
+              </div>
+
+              <a
+                href="#"
+                class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                data-notify="0"
+              >
+                <i class="zmdi zmdi-favorite-outline"></i>
+              </a>
+            </div>
+            <%if(session){%>
+            <li class="account">
+              <a href="#">
+                <i class="fa fa-user"></i> My Account
+                <i class="fa fa-angle-down"></i>
+              </a>
+              <ul class="account_selection">
+                <li>
+                  <a href="/profile"
+                    ><i class="fa fa-user" aria-hidden="true"></i>Profile</a
+                  >
+                </li>
+                <li>
+                  <a href="/logout"
+                    ><i class="fa fa-sign-in" aria-hidden="true"></i>Logout</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <%}else{%>
+            <li class="account">
+              <a href="#">
+                <i class="fa fa-user"></i> My Account
+                <i class="fa fa-angle-down"></i>
+              </a>
+              <ul class="account_selection">
+                <li>
+                  <a href="/login"
+                    ><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a
+                  >
+                </li>
+                <li>
+                  <a href="/signup"
+                    ><i class="fa fa-user-plus" aria-hidden="true"></i
+                    >Register</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <%}%>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Header Mobile -->
+      <div class="wrap-header-mobile">
+        <!-- Logo moblie -->
+        <!-- <div class="logo-mobile">
+				<a href="index.html"><img src="images/icons/logo-01.png" alt="IMG-LOGO"></a>
+			</div> -->
+        <div class="logo_mobile">
+          <a href="#">Shop<span>Marvel</span></a>
+        </div>
+
+        <!-- Icon header -->
+        <div class="wrap-icon-header flex-w flex-r-m m-r-15">
+          <div
+            class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search"
+          >
+            <i class="zmdi zmdi-search"></i>
+          </div>
+
+          <div
+            class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 js-show-cart"
+          >
+            <a href="/cart" style="color: #222"
+              ><i class="zmdi zmdi-shopping-cart"></i
+            ></a>
+          </div>
+
+          <a
+            href="#"
+            class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10"
+          >
+            <i class="zmdi zmdi-favorite-outline"></i>
+          </a>
+        </div>
+
+        <!-- Button show menu -->
+        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Menu Mobile -->
+      <div class="menu-mobile">
+        <ul class="topbar-mobile">
+          <li>
+            <div class="left-top-bar">
+              Free shipping for standard order over $100
+            </div>
+          </li>
+
+          <li>
+            <div class="right-top-bar flex-w h-full">
+              <a href="#" class="flex-c-m p-lr-10 trans-04"> Help & FAQs </a>
+
+              <!-- <a href="#" class="flex-c-m p-lr-10 trans-04">
+							My Account
+						</a> -->
+
+              <a href="#" class="flex-c-m p-lr-10 trans-04"> EN </a>
+
+              <a href="#" class="flex-c-m p-lr-10 trans-04"> INR </a>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="main-menu-m">
+          <li>
+            <a href="product.html">Home</a>
+          </li>
+          <li>
+            <a href="index.html">Shop</a>
+            <ul class="sub-menu-m">
+              <% category.forEach(function(data) { %>
+
+              <li><a href=""><%=data.categoryname%></a></li>
+
+              <% }) %>
+            </ul>
+            <span class="arrow-main-menu-m">
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </span>
+          </li>
+
+          <li>
+            <a href="shoping-cart.html" class="label1 rs1" data-label1="hot"
+              >Features</a
+            >
+          </li>
+
+          <!-- <li>
+					<a href="blog.html">Blog</a>
+				</li> -->
+
+          <li>
+            <a href="about.html">About</a>
+          </li>
+
+          <li>
+            <a href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Modal Search -->
+      <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+        <div class="container-search-header">
+          <button
+            class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search"
+          >
+            <img src="images/icons/icon-close2.png" alt="CLOSE" />
+          </button>
+
+          <form class="wrap-search-header flex-w p-l-15">
+            <button class="flex-c-m trans-04">
+              <i class="zmdi zmdi-search"></i>
+            </button>
+            <input
+              class="plh3"
+              type="text"
+              name="search"
+              placeholder="Search..."
+            />
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <section class="content-main m-t-50">
+      <div class="content-header">
+        <h2 class="content-title">Your Addresses</h2>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div class="row gx-5">
+            <!-- <aside class="col-lg-3 border-end">
+                        <nav class="nav nav-pills flex-lg-column mb-4">
+                            <a class="nav-link active" aria-current="page" href="#">General</a>
+                            <a class="nav-link" href="#">Your Orders</a>
+                            <a class="nav-link" href="#">Login & Security</a>
+                            <a class="nav-link" href="#">Your Adresses</a>
+                            <a class="nav-link" href="#">Payment option</a>
+                            <a class="nav-link" href="#">Contact Us</a>
+                        </nav>
+                    </aside> -->
+            <aside class="col-lg-3 border-end">
+              <figure class="text-lg-center">
+                <img
+                  class="img-lg mb-3 img-avatar"
+                  src="/static/uploads/<%=user.image%>"
+                  alt="User Photo"
+                />
+                <h5><b><%=user.Firstname%> <%=user.Lastname%></b></h5>
+                <h6><b><%=user.email%></b></h6>
+              </figure>
+            </aside>
+            <!-- col.// -->
+            <div class="col-lg-9">
+              <% if (user.address) { %>
+              <div class="row">
+                <% user.address.forEach(function (address) { %>
+                <div class="col-lg-4 col-md-6">
+                  <div
+                    class="card1 mt-5 mb-5"
+                    style="background-color: #fffffff1"
+                  >
+                    <div class="card-body text-center">
+                      <h6><b>Address</b></h6>
+                      <table class="mt-4 mb-4">
+                        <tbody>
+							<tr>
+								<td>Type:</td>
+								<td  id="type-<%= address._id %>"><%= address.type %></td>
+                          </tr>
+                          <tr>
+                            <td>Address:</td>
+                            <td id="houseName-<%= address._id %>"><%= address.houseName %></td>
+                          </tr>
+                          <tr>
+                            <td>Village:</td>
+                            <td id="village-<%= address._id %>"><%= address.village %></td>
+                          </tr>
+                          <tr>
+                            <td>Landmark:</td>
+                            <td id="landmark-<%= address._id %>"><%= address.landmark %></td>
+                          </tr>
+                          <tr>
+                            <td>pincode:</td>
+                            <td id="pincode-<%= address._id %>"><%= address.pincode %></td>
+                          </tr>
+                          <tr>
+                            <td>City:</td>
+                            <td id="city-<%= address._id %>"><%= address.city %></td>
+                          </tr>
+                          <tr>
+                            <td>District:</td>
+                            <td id="district-<%= address._id %>"><%= address.district %></td>
+                          </tr>
+                          <tr>
+                            <td>State:</td>
+                            <td id="state-<%= address._id %>"><%= address.state %></td>
+                          </tr>
+                          <tr>
+                            <td>Country:</td>
+                            <td id="country-<%= address._id %>"><%= address.country %></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div class="profile-details">
+                        <div
+                          class="d-flex justify-content-center align-items-center"
+                        >
+                          <a
+                            href="/deleteaddress?id=<%= address._id %>"
+                            class="align-items-center"
+                            style="color: black; bottom: 0"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="18"
+                              height="18"
+                              fill="currentColor"
+                              class="bi bi-trash"
+                              viewBox="0 0 16 16"
+                            >
+                              <path
+                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"
+                              />
+                              <path
+                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"
+                              />
+                            </svg>
+                          </a>
+                          <div>
+                            <a href="#" data-toggle="modal" data-target="#editAddressModal" data-addressid="<%= address._id %>" onclick="fun('<%= address._id %>')">
+								<i class="fa fa-edit"></i>
+							  </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% }); %>
+              </div>
+              <% } else { %>
+              <h5 style="text-align: center" class="my-5">
+                No Address, Please add your address
+              </h5>
+              <% } %>
+            </div>
+
+            <!-- <div class="text-center mb-3">
+                        <a href="/getaddaddress">
+                          <button style="background-color: rgb(103, 44, 163); color: #ffff; width: 40vw;text-align: center;"
+                            class="primary-btn btn me-5 shadow">Add Address</button>
+                        </a>
+                      </div> -->
+            <div class="text-center mb-3">
+              <button
+                style="
+                  background-color: rgb(103, 44, 163);
+                  color: #ffff;
+                  width: 20vw;
+                  text-align: center;
+                "
+                class="primary-btn btn me-5 shadow"
+                data-toggle="modal"
+                data-target="#addressModal"
+              >
+                Add Address
+              </button>
+            </div>
+          </div>
+          <!-- row.// -->
+        </div>
+        <!-- card body end// -->
+      </div>
+      <!-- card end// -->
+    </section>
+
+    <footer class="bg3 p-t-75 p-b-32">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-lg-3 p-b-50">
+            <h4 class="stext-301 cl0 p-b-30">Categories</h4>
+
+            <ul>
+              <li class="p-b-10">
+                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                  T-shirts
+                </a>
+              </li>
+
+              <li class="p-b-10">
+                <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Hoodies </a>
+              </li>
+
+              <li class="p-b-10">
+                <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Gadgets </a>
+              </li>
+
+              <li class="p-b-10">
+                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                  Accessories
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 p-b-50">
+            <h4 class="stext-301 cl0 p-b-30">Help</h4>
+
+            <ul>
+              <li class="p-b-10">
+                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                  Track Order
+                </a>
+              </li>
+
+              <li class="p-b-10">
+                <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> Returns </a>
+              </li>
+
+              <li class="p-b-10">
+                <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+                  Shipping
+                </a>
+              </li>
+
+              <li class="p-b-10">
+                <a href="#" class="stext-107 cl7 hov-cl1 trans-04"> FAQs </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 p-b-50">
+            <h4 class="stext-301 cl0 p-b-30">GET IN TOUCH</h4>
+
+            <p class="stext-107 cl7 size-201">
+              Any questions? Let us know in store at 8th floor, 379 Hudson St,
+              New York, NY 10018 or call us on (+1) 96 716 6879
+            </p>
+
+            <div class="p-t-27">
+              <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                <i class="fa fa-facebook"></i>
+              </a>
+
+              <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                <i class="fa fa-instagram"></i>
+              </a>
+
+              <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                <i class="fa fa-pinterest-p"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-3 p-b-50">
+            <h4 class="stext-301 cl0 p-b-30">Newsletter</h4>
+
+            <form>
+              <div class="wrap-input1 w-full p-b-4">
+                <input
+                  class="input1 bg-none plh1 stext-107 cl7"
+                  type="text"
+                  name="email"
+                  placeholder="email here"
+                />
+                <div class="focus-input1 trans-04"></div>
+              </div>
+
+              <div class="p-t-18">
+                <button
+                  class="flex-c-m stext-101 cl0 size-103 bg1 bor1 hov-btn2 p-lr-15 trans-04"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="p-t-40">
+          <div class="flex-c-m flex-w p-b-18">
+            <a href="#" class="m-all-1">
+              <img src="/static/images/icons/icon-pay-01.png" alt="ICON-PAY" />
+            </a>
+
+            <a href="#" class="m-all-1">
+              <img src="/static/images/icons/icon-pay-02.png" alt="ICON-PAY" />
+            </a>
+
+            <a href="#" class="m-all-1">
+              <img src="/static/images/icons/icon-pay-03.png" alt="ICON-PAY" />
+            </a>
+
+            <a href="#" class="m-all-1">
+              <img src="/static/images/icons/icon-pay-04.png" alt="ICON-PAY" />
+            </a>
+
+            <a href="#" class="m-all-1">
+              <img src="/static/images/icons/icon-pay-05.png" alt="ICON-PAY" />
+            </a>
+          </div>
+
+          <p class="stext-107 cl6 txt-center">
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;
+            <script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved | Marvel Wears.com
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to top -->
+    <div class="btn-back-to-top" id="myBtn">
+      <span class="symbol-btn-back-to-top">
+        <i class="zmdi zmdi-chevron-up"></i>
+      </span>
+    </div>
+
+    <!-- modal for adding address -->
+
+    <div
+      class="modal fade p-t-90 p-b-20"
+      id="addressModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Address</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/addaddress" method="POST">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="row gx-3">
+                    <div class="col-6 mb-3">
+                      <label class="form-label">type</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="type"
+                      />
+                    </div>
+                    <!-- col .// -->
+                    <div class="col-6 mb-3">
+                      <label class="form-label">houseName</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="houseName"
+                      />
+                    </div>
+                    <!-- col .// -->
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">village</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="village"
+                      />
+                    </div>
+                    <!-- col .// -->
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">landmark</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="landmark"
+                      />
+                    </div>
+                    <!-- col .// -->
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">pincode</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="pincode"
+                      />
+                    </div>
+                    <!-- col .// -->
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">city</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="city"
+                      />
+                    </div>
+                    <!-- col .// -->
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">district</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="district"
+                      />
+                    </div>
+
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">state</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="state"
+                      />
+                    </div>
+                    <!-- col .// -->
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">country</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="country"
+                      />
+                    </div>
+                    <!-- col .// -->
+                  </div>
+                  <!-- row.// -->
+                </div>
+                <!-- col.// -->
+              </div>
+              <!-- row.// -->
+              <br />
+              <button class="btn btn-primary" type="submit">Add Address</button>
+            </form>
+          </div>
+          <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Editing address moadal -->
+    <div
+      class="modal fade p-t-90 p-b-20"
+      id="editAddressModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Edit Your Address
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="editAddressForm" action="/editaddress" method="POST">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="row gx-3">
+                    <div class="col-6 mb-3">
+                      <label class="form-label">Type</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="type"
+                        id="editAddressType"
+                      />
+                    </div>
+                    <div class="col-6 mb-3">
+                      <label class="form-label">House Name</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="houseName"
+                        id="editAddressHouseName"
+                      />
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">Village</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="village"
+                        id="editAddressVillage"
+                      />
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">Landmark</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="landmark"
+                        id="editAddressLandmark"
+                      />
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">Pincode</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="pincode"
+                        id="editAddressPincode"
+                      />
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">City</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="city"
+                        id="editAddressCity"
+                      />
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">District</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="district"
+                        id="editAddressDistrict"
+                      />
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">State</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="state"
+                        id="editAddressState"
+                      />
+                    </div>
+                    <div class="col-lg-6 mb-3">
+                      <label class="form-label">Country</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Type here"
+                        name="country"
+                        id="editAddressCountry"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br />
+              <button class="btn btn-primary" type="submit">
+                Update Address
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+	<script>
+	function fun(addressId){
+	var type = document.getElementById('type-' + addressId).textContent;
+	document.getElementById('editAddressType').value = type;
+	var houseName = document.getElementById('houseName-' + addressId).textContent;
+	document.getElementById('editAddressHouseName').value = houseName;
+	var village = document.getElementById('village-' + addressId).textContent;
+	document.getElementById('editAddressVillage').value = village;
+	var landmark = document.getElementById('landmark-' + addressId).textContent;
+	document.getElementById('editAddressLandmark').value = landmark;
+	var pincode = document.getElementById('pincode-' + addressId).textContent;
+	document.getElementById('editAddressPincode').value = pincode;
+	var city = document.getElementById('city-' + addressId).textContent;
+	document.getElementById('editAddressCity').value = city;
+	var district = document.getElementById('district-' + addressId).textContent;
+	document.getElementById('editAddressDistrict').value = district;
+	var state = document.getElementById('state-' + addressId).textContent;
+	document.getElementById('editAddressState').value = state;
+	var country = document.getElementById('country-' + addressId).textContent;
+	document.getElementById('editAddressCountry').value = country;
+	// form action
+	document.getElementById('editAddressForm').action = '/editaddress?addressId=' + addressId;
+		}
+	  </script>
+    
+    <!--===============================================================================================-->
+    <script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/bootstrap/js/popper.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/select2/select2.min.js"></script>
+    <script>
+      $(".js-select2").each(function () {
+        $(this).select2({
+          minimumResultsForSearch: 20,
+          dropdownParent: $(this).next(".dropDownSelect2"),
+        });
+      });
+    </script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/static/vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/slick/slick.min.js"></script>
+    <script src="/static/js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/parallax100/parallax100.js"></script>
+    <script>
+      $(".parallax100").parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+    <script>
+      $(".gallery-lb").each(function () {
+        // the containers for all your galleries
+        $(this).magnificPopup({
+          delegate: "a", // the selector for gallery item
+          type: "image",
+          gallery: {
+            enabled: true,
+          },
+          mainClass: "mfp-fade",
+        });
+      });
+    </script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/isotope/isotope.pkgd.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/sweetalert/sweetalert.min.js"></script>
+    <script>
+      $(".js-addwish-b2").on("click", function (e) {
+        e.preventDefault();
+      });
+
+      $(".js-addwish-b2").each(function () {
+        var nameProduct = $(this).parent().parent().find(".js-name-b2").html();
+        $(this).on("click", function () {
+          swal(nameProduct, "is added to wishlist !", "success");
+
+          $(this).addClass("js-addedwish-b2");
+          $(this).off("click");
+        });
+      });
+
+      $(".js-addwish-detail").each(function () {
+        var nameProduct = $(this)
+          .parent()
+          .parent()
+          .parent()
+          .find(".js-name-detail")
+          .html();
+
+        $(this).on("click", function () {
+          swal(nameProduct, "is added to wishlist !", "success");
+
+          $(this).addClass("js-addedwish-detail");
+          $(this).off("click");
+        });
+      });
+
+      /*---------------------------------------------*/
+
+      $(".js-addcart-detail").each(function () {
+        var nameProduct = $(this)
+          .parent()
+          .parent()
+          .parent()
+          .parent()
+          .find(".js-name-detail")
+          .html();
+        $(this).on("click", function () {
+          swal(nameProduct, "is added to cart !", "success");
+        });
+      });
+    </script>
+    <!--===============================================================================================-->
+    <script src="/static/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+      $(".js-pscroll").each(function () {
+        $(this).css("position", "relative");
+        $(this).css("overflow", "hidden");
+        var ps = new PerfectScrollbar(this, {
+          wheelSpeed: 1,
+          scrollingThreshold: 1000,
+          wheelPropagation: false,
+        });
+
+        $(window).on("resize", function () {
+          ps.update();
+        });
+      });
+    </script>
+    <!--===============================================================================================-->
+    <script src="/static/js/main.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <!-- profile script -->
+    <script src="/static/admin/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/static/admin/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/static/admin/js/vendors/select2.min.js"></script>
+    <script src="/static/admin/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/static/admin/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/static/admin/js/main.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- ends -->
+    
+  </body>
+</html>

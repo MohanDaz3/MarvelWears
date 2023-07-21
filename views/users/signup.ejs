@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Registration Marvels</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="/static/signup/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="/static/signup/css/style.css">
+	</head>
+
+	<body>
+
+		<div class="wrapper" style="background-image: url('/static/signup/images/wallpaperflare.com_wallpaper\ \(6\).jpg');">
+			<div class="inner">
+				<form action="/signup" id="signup-form" method="POST">
+					<h2>Welcome To Marvels</h2>
+                    
+                    <div class="form-wrapper">
+						<label for="">First Name</label>
+						<input type="text" class="form-control" name="fname" id="name">  
+					</div>
+                    <div class="form-wrapper">
+						<label for="">last Name</label>
+						<input type="text" class="form-control" name="lname" id="name">  
+					</div>
+					<div class="form-wrapper">
+						<label for="">Email</label>
+						<input type="email" class="form-control" name="email" id="email">
+					</div>
+					<div class="form-wrapper">
+						<label for="">Password</label>
+						<input type="password" class="form-control" name="password" id="password">
+					</div>
+					<div class="form-wrapper">
+						<label for="">Confirm Password</label>
+						<input type="password" class="form-control" name="cpassword" id="cpassword">
+					</div>
+          <div class="form-wrapper">
+						<label for="">Referal Code</label>
+						<input type="text" class="form-control" name="referalcode" id="cpassword">
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" id="agree-term"> I Accept the Terms of Use & Privacy Policy.
+							<span class="checkmark"></span>
+						</label>
+					</div>
+					<!-- <button type="submit" name="submit" id="submit" value="Sign up">Register Now</button> -->
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit button" value="Register Now"/>
+                        
+                    </div>
+                    <div class="text-center" id="text2">
+                        <p>Already have an account? <a class="link1" href="/login">Login</a></p>
+                      
+                      </div>
+				</form>
+			</div>
+		</div>
+
+        <!-- from validation in js -->
+        <script>
+            // Client-side form validation
+            const form = document.getElementById('signup-form');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const confirmPasswordInput = document.getElementById('cpassword');
+            const agreeTermCheckbox = document.getElementById('agree-term');
+            const nameInput = document.getElementById('name')
+          
+            form.addEventListener('submit', (event) => {
+              // validate User Name
+              if (nameInput.value.length < 3) {
+                event.preventDefault();
+                alert('User name should contain atleast 3 characters long.');
+                return;
+              }
+          
+              // Validate email format
+              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              if (!emailRegex.test(emailInput.value)) {
+                event.preventDefault();
+                alert('Please enter a valid email address.');
+                return;
+              }
+          
+              // Validate password length
+              if (passwordInput.value.length < 6) {
+                event.preventDefault();
+                alert('Password should be atleast 6 characters long.');
+                return;
+              }
+          
+              // Validate password match
+              if (passwordInput.value !== confirmPasswordInput.value) {
+                event.preventDefault();
+                alert('Passwords does not match.');
+                return;
+              }
+          
+              // Validate checkbox
+              if (!agreeTermCheckbox.checked) {
+                event.preventDefault();
+                alert('Please agree to the terms of service.');
+                return;
+              }
+          
+              // Submit the form
+              if(emailRegex.test(emailInput.value) && nameInput.value.length < 3 && passwordInput.value.length > 6 && passwordInput.value === confirmPasswordInput.value && agreeTermCheckbox.checked){
+                form.submit();
+              }
+              
+
+              
+            });
+          </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+
+<!-- <script>const myDiv = document.getElementById('errorMessage'); 
+    setTimeout(function() {
+    myDiv.innerHTML = ''; }, 3000);</script> -->
+
+
+<% if (locals.notice) { %>
+	<script>
+	  Swal.fire({
+		icon: 'error',
+		title: '<%=notice%>',
+		showConfirmButton: false,
+		timer: 2000
+	  });
+	</script>
+	<% } %> 
+    <% if (locals.Tnotice) { %>
+        <script>
+          Swal.fire({
+            icon: 'success',
+            title: '<%=Tnotice%>',
+            showConfirmButton: true,
+            timer: 5000
+          });
+        </script>
+        <% } %> 
+          
+         
+           
+		
+	</body>
+</html>

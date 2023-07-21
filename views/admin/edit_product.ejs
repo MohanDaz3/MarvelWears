@@ -1,0 +1,517 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <title>MW.com Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="/static/admin/imgs/theme/favicon.svg"> -->
+    <!-- Template CSS -->
+    <link href="/static/admin/css/main.css" rel="stylesheet" type="text/css" />
+    <style>
+        body{
+            background: rgb(126, 0, 0) !important;
+        }
+.logo {
+font-family: 'Arial', sans-serif;
+font-size: 24px;
+font-weight: bold;
+text-transform: uppercase;
+color: #ffffff;
+}
+
+.marvel {
+font-size: 30px;
+
+color: #000000; /* black color */
+}
+
+.wears {
+font-size: 30px;
+color: #ff0000;/* red color */
+}
+
+p {
+  margin: 0;
+}
+
+.upload__box {
+  padding: 40px;
+}
+
+.upload__inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.upload__btn {
+  display: inline-block;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  min-width: 116px;
+  padding: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid;
+  background-color: #4045ba;
+  border-color: #4045ba;
+  border-radius: 10px;
+  line-height: 26px;
+  font-size: 14px;
+}
+
+.upload__btn:hover {
+  background-color: unset;
+  color: #4045ba;
+  transition: all 0.3s ease;
+}
+
+.upload__btn-box {
+  margin-bottom: 10px;
+}
+
+.upload__img-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+
+.upload__img-box {
+  width: 200px;
+  padding: 0 10px;
+  margin-bottom: 12px;
+}
+
+.upload__img-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+  line-height: 24px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.upload__img-close:after {
+  content: "\2716";
+  font-size: 14px;
+  color: white;
+}
+
+.img-bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  padding-bottom: 100%;
+}
+
+     </style>
+
+</head>
+
+<body>
+<div class="screen-overlay"></div>
+<aside class="navbar-aside" id="offcanvas_aside">
+    <div class="aside-top">
+        <!-- <a href="index.html" class="brand-wrap">
+            <img src="/static/admin/imgs/theme/marvel_logo.svg" class="logo" alt="Evara Dashboard">
+        </a> -->
+        <div class="logo">
+            <span class="marvel">Shop</span>
+            <span class="wears">Marvels</span>
+          </div>
+          
+        <div>
+            <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+        </div>
+    </div>
+    <nav>
+        <ul class="menu-aside">
+            <li class="menu-item active">
+                <a class="menu-link" href="/admin/dashboard"> <i class="icon material-icons md-home"></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="menu-item ">
+                <a class="menu-link" href="/admin/users"><i class="icon material-icons md-person"></i>
+                    <span class="text">users</span>
+                </a>
+                <!-- <div class="submenu">
+                    <a href="page-products-list.html">Product List</a>
+                    <a href="page-products-grid.html">Product grid</a>
+                    <a href="page-products-grid-2.html">Product grid 2</a>
+                    <a href="page-categories.html">Categories</a>
+                </div> -->
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                    <span class="text">Orders</span>
+                </a>
+                <!-- <div class="submenu">
+                    <a href="page-orders-1.html">Order list 1</a>
+                    <a href="page-orders-2.html">Order list 2</a>
+                    <a href="page-orders-detail.html">Order detail</a>
+                </div> -->
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="page-sellers-cards.html"><i class="icon material-icons md-shopping_bag"></i>
+                     <!-- <i class="icon material-icons md-store"></i> -->
+                    <span class="text">Products</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/productlist">Product List</a>
+                    <a href="/admin/addproduct">Add products</a>
+                    <!-- <a href="page-seller-detail.html">Seller profile</a> -->
+                </div>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="/admin/addcategory"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Categories</span>
+                </a>
+                <div class="submenu">
+                    <a href="/admin/categorylist">Category list</a>
+                    <a href="/admin/addcategory">Add Category</a>
+                    <!-- <a href="page-form-product-3.html">Add product 3</a>
+                    <a href="page-form-product-4.html">Add product 4</a> -->
+                </div>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="page-transactions-1.html"> <i class="icon material-icons md-monetization_on"></i>
+                    <span class="text">Coupons</span>
+                </a>
+                <div class="submenu">
+                    <a href="page-transactions-1.html">Transaction 1</a>
+                    <a href="page-transactions-2.html">Transaction 2</a>
+                </div>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-local_offer"></i>
+                    <span class="text">Banner</span>
+                </a>
+                <div class="submenu">
+                    <a href="page-account-login.html">User login</a>
+                    <a href="page-account-register.html">User registration</a>
+                    <a href="page-error-404.html">Error 404</a>
+                </div>
+            </li>
+            <!-- <li class="menu-item">
+                <a class="menu-link" href="page-reviews.html"> <i class="icon material-icons md-comment"></i>
+                    <span class="text">Reviews</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="page-brands.html"> <i class="icon material-icons md-stars"></i>
+                    <span class="text">Brands</span> </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                    <span class="text">Statistics</span>
+                </a>
+            </li> -->
+        </ul>
+        <hr>
+        <ul class="menu-aside">
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                    <span class="text">Settings</span>
+                </a>
+                <!-- <div class="submenu">
+                    <a href="page-settings-1.html">Setting sample 1</a>
+                    <a href="page-settings-2.html">Setting sample 2</a>
+                </div> -->
+            </li>
+            <!-- <li class="menu-item">
+                <a class="menu-link" href=""> <i class="icon material-icons md-local_offer"></i>
+                    <span class="text"> Starter page </span>
+                </a>
+            </li> -->
+        </ul>
+        <br>
+        <br>
+    </nav>
+</aside>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+            <div class="col-search">
+                <form class="searchform">
+                    <div class="input-group">
+                        <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                        <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+                    </div>
+                    <datalist id="search_terms">
+                        <option value="Products">
+                        <option value="New orders">
+                        <option value="Apple iphone">
+                        <option value="Ahmed Hassan">
+                    </datalist>
+                </form>
+            </div>
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link btn-icon" href="#">
+                            <i class="material-icons md-notifications animation-shake"></i>
+                            <span class="badge rounded-pill">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+                    </li> -->
+                    <!-- <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage" aria-expanded="false"><i class="material-icons md-public"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                            <a class="dropdown-item text-brand" href="#"><img src="/static/admin/imgs/theme/flag-us.png" alt="English">English</a>
+                            <a class="dropdown-item" href="#"><img src="/static/admin/imgs/theme/flag-fr.png" alt="Français">Français</a>
+                            <a class="dropdown-item" href="#"><img src="/static/admin/imgs/theme/flag-jp.png" alt="Français">日本語</a>
+                            <a class="dropdown-item" href="#"><img src="/static/admin/imgs/theme/flag-cn.png" alt="Français">中国人</a>
+                        </div>
+                    </li> -->
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="" alt="Admin"></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                            <!-- <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-account_balance_wallet"></i>Wallet</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a> -->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <section class="content-main">
+            <div class="row">
+                
+                <div class="col-9">
+                    <div class="content-header">
+                        
+                        <h2 class="content-title">Add New Product</h2>
+                       
+                    </div>
+                   
+                </div>
+                <div class="col-lg-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Product</h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="/admin/editproduct" method="POST" enctype="multipart/form-data">
+                                <div class="mb-4">
+                                    <label for="product_name" class="form-label">Product Name</label>
+                                    <input type="text" placeholder="Type here" name="name" class="form-control" id="product_name" value="<%=product.productname%>">
+                                    <input type="hidden" placeholder="Type here" name="id" class="form-control" id="product_name" value="<%=product.id%>">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label">Full description</label>
+                                    <textarea placeholder="Type here" name="description" class="form-control" rows="4"><%=product.description%></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="mb-4">
+                                            <label class="form-label">price</label>
+                                            <div class="row gx-2">
+                                                <input placeholder="" type="text" name="price" class="form-control" value="<%=product.price%>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-4">
+                                            <label class="form-label">Stock</label>
+                                            <input placeholder="0" type="number" name="stock" class="form-control" value="<%=product.stock%>">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="mb-4">
+                                            <label class="form-label">Offer price</label>
+                                            <div class="row gx-2">
+                                                <input placeholder="" type="text" name="productoffer" class="form-control" value="<%=product.productoffer%>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 mb-3">
+                                        <label class="form-label">Category</label>
+                                        <select class="form-select" name="category">
+                                            <option value="<%=product.category%>"> <%=product.category%> </option>
+                                            <% category.forEach(function(data) { %>
+                                            <option value="<%=data.categoryname%>"> <%=data.categoryname%></option>
+                                            <% }); %> 
+                                            
+                                        </select>
+                                    </div>
+                                </div>
+                                <button class="btn btn-md rounded font-sm hover-up" type="submit">Save product</button>
+                                <!-- <div class="mb-4">
+                                    <label class="form-label">Tax rate</label>
+                                    <input type="text" placeholder="%" class="form-control" id="product_name">
+                                </div> -->
+                                <!-- <label class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <span class="form-check-label"> Make a template </span>
+                                </label> -->
+                           
+                        </div> 
+                    </div> <!-- card end// -->
+                    
+                </div>
+                <!-- <div class="col-lg-3">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h4>Image</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-upload">
+                                <% if (product && product.productimage && product.productimage.length > 0) { %>
+                                  <% product.productimage.forEach(function (image) { %>
+                                    <div class="image-preview">
+                                      <img src="/static/uploads/<%= image %>" alt="Product Image">
+                                      <span class="close-icon" data-image="<%= image %>">&times;</span>
+                                    </div>
+                                  <% }); %>
+                                <% } %>
+                                <input name="image" class="form-control" type="file" accept="image/*" multiple>
+                              </div>
+                              
+                                      
+                        </div>
+                        
+                    </div> 
+                    <button class="btn btn-md rounded font-sm hover-up" type="submit">Add product</button>
+                   
+                </div> -->
+                <div class="col-lg-3">
+                    <h3>Upload images</h3>
+                    <div class="upload__box">
+                        <% if (product && product.productimage && product.productimage.length > 0) { %>
+                            <% product.productimage.forEach(function (image) { %>
+                        <div class="upload__img-wrap">
+                            <img src="/static/uploads/<%= image %>" alt="Product Image">
+                        </div>
+                        <% }); %>
+                        <% } %>
+                        <div class="upload__btn-box">
+                          <label class="upload__btn">
+                            <p>Upload images</p>
+                            <!-- <input type="file" name="images" multiple="" data-max_length="20" class="upload__inputfile " required> -->
+                            <input name="images" class="upload__inputfile" type="file" accept="image/*" multiple>
+                          </label>
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+                
+            </form>
+            </div>
+        </section> <!-- content-main end// -->
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©, Marvel Wears.com
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+    <script>
+      jQuery(document).ready(function () {
+  ImgUpload();
+});
+
+function ImgUpload() {
+  var imgWrap = "";
+  var imgArray = [];
+
+  $(".upload__inputfile").on("change", function (e) {
+    imgWrap = $(this).closest(".upload__box").find(".upload__img-wrap");
+    var maxLength = $(this).attr("data-max_length");
+
+    var files = e.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+
+    filesArr.forEach(function (f, index) {
+      if (!f.type.match("image.*")) {
+        return;
+      }
+
+      if (imgArray.length >= maxLength) {
+        return false;
+      } else {
+        imgArray.push(f);
+
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          var html =
+            "<div class='upload__img-box'><div style='background-image: url(" +
+            e.target.result +
+            ")' data-file='" +
+            f.name +
+            "' class='img-bg'><div class='upload__img-close'>&times;</div></div></div>";
+          imgWrap.append(html);
+        };
+        reader.readAsDataURL(f);
+      }
+    });
+  });
+
+  $("body").on("click", ".upload__img-close", function (e) {
+    var file = $(this).parent().data("file");
+    for (var i = 0; i < imgArray.length; i++) {
+      if (imgArray[i].name === file) {
+        imgArray.splice(i, 1);
+        break;
+      }
+    }
+    $(this).parent().parent().remove();
+  });
+}
+
+      </script>
+      
+      
+
+    <script src="/static/admin/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/static/admin/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/static/admin/js/vendors/select2.min.js"></script>
+    <script src="/static/admin/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/static/admin/js/vendors/jquery.fullscreen.min.js"></script>
+    <!-- Main Script -->
+    <script src="/static/admin/js/main.js" type="text/javascript"></script>
+</body>
+
+
+
+</html> 
