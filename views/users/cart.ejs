@@ -1167,10 +1167,22 @@
           });
         });
       };
+
+      addEventListenersToIncrementDecrementButtons();
     </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", async () => {
+        // REMOVE FROM CART -------------------
+        const removeFromCart = async (userId, productId) => {
+          const response = await fetch(
+            `/carts/${userId}/products/${productId}`,
+            { method: "DELETE" }
+          );
+          const resBody = await response.json();
+          return resBody;
+        };
+
         // ADD EVENT LISTENERS TO REMOVE BUTTONS -------------------
         // This must be written inside a function because it has to be called again
         // when the cart is reloaded.
@@ -1274,16 +1286,6 @@
           update_amounts();
           addEventListenersToRemoveButtons();
           addEventListenersToIncrementDecrementButtons();
-        };
-
-        // REMOVE FROM CART -------------------
-        const removeFromCart = async (userId, productId) => {
-          const response = await fetch(
-            `/carts/${userId}/products/${productId}`,
-            { method: "DELETE" }
-          );
-          const resBody = await response.json();
-          return resBody;
         };
       });
     </script>
