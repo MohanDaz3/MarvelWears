@@ -62,7 +62,7 @@ color: #ff0000;/* red color */
     </div>
     <nav>
         <ul class="menu-aside">
-            <li class="menu-item active">
+            <li class="menu-item ">
                 <a class="menu-link" href="/admin/dashboard"> <i class="icon material-icons md-home"></i>
                     <span class="text">Dashboard</span>
                 </a>
@@ -88,13 +88,13 @@ color: #ff0000;/* red color */
                     <a href="page-orders-detail.html">Order detail</a>
                 </div> -->
             </li>
-            <li class="menu-item has-submenu">
+            <li class="menu-item has-submenu active">
                 <a class="menu-link" href="page-sellers-cards.html"><i class="icon material-icons md-shopping_bag"></i>
                      <!-- <i class="icon material-icons md-store"></i> -->
                     <span class="text">Products</span>
                 </a>
                 <div class="submenu">
-                    <a href="/admin/productlist">Product List</a>
+                    <a href="/admin/productlist" class="active">Product List</a>
                     <a href="/admin/addproduct">Add products</a>
                     <!-- <a href="page-seller-detail.html">Seller profile</a> -->
                 </div>
@@ -168,15 +168,15 @@ color: #ff0000;/* red color */
             <div class="col-search">
                 <form class="searchform">
                     <div class="input-group">
-                        <input list="search_terms" type="text" class="form-control" placeholder="Search term">
-                        <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button>
+                        <!-- <input list="search_terms" type="text" class="form-control" placeholder="Search term">
+                        <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button> -->
                     </div>
-                    <datalist id="search_terms">
+                    <!-- <datalist id="search_terms">
                         <option value="Products">
                         <option value="New orders">
                         <option value="Apple iphone">
                         <option value="Ahmed Hassan">
-                    </datalist>
+                    </datalist> -->
                 </form>
             </div>
             <div class="col-nav">
@@ -234,28 +234,28 @@ color: #ff0000;/* red color */
                     <div class="row align-items-center">
                         <div class="col col-check flex-grow-0">
                             <div class="form-check ms-2">
-                                <input class="form-check-input" type="checkbox" value="">
+                                <!-- <input class="form-check-input" type="checkbox" value=""> -->
                             </div>
                         </div>
                         <div class="col-md-3 col-12 me-auto mb-md-0 mb-3">
-                            <select class="form-select">
+                            <!-- <select class="form-select">
                                 <option selected>All category</option>
                                 <% category.forEach(function(data) { %>
                                     <option value="<%=data.categoryname%>"> <%=data.categoryname%></option>
                                     <% }); %> 
                                 
-                            </select>
+                            </select> -->
                         </div>
                         <div class="col-md-2 col-6">
-                            <input type="date" value="02.05.2021" class="form-control">
+                            <!-- <input type="date" value="02.05.2021" class="form-control"> -->
                         </div>
                         <div class="col-md-2 col-6">
-                            <select class="form-select">
+                            <!-- <select class="form-select">
                                 <option selected>Status</option>
                                 <option>Active</option>
                                 <option>Disabled</option>
                                 <option>Show all</option>
-                            </select>
+                            </select> -->
                         </div>
                     </div>
                 </header> <!-- card-header end// -->

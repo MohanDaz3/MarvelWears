@@ -4,6 +4,7 @@ const Category = require('../models/categoryModel')
 const Products = require('../models/productModel')
 const Order = require('../models/orderModel')
 const Wallet = require('../models/walletModel')
+const moment = require('moment')
 const Razorpay = require('razorpay')
 
 const { RAZORPAY_ID_KEY, RAZORPAY_SECRET_KEY }= process.env;
@@ -32,10 +33,7 @@ async function checkStock(userId) {
   const orderplace = async (req, res) => {
     try {
       const { loggedIn: session, user: { _id: userId } } = req.session;
-      const { address, total, paymentmethod,coupon,discount} = req.body;
-      console.log("dwqaff"+req.body);
-      console.log("letsss checkkkkkk");
-      console.log(address,total,paymentmethod,coupon,discount);
+      const { address, total, paymentmethod, coupon, discount } = req.body;
       const parsedTotal = parseFloat(total);
   
       let flag = await checkStock(userId);
@@ -46,12 +44,16 @@ async function checkStock(userId) {
           totalAmount: parsedTotal,
           paymentMethod: paymentMethod,
           Shippingaddress: address,
-          couponAmount:discount,
+          couponAmount: discount,
         });
-        if(coupon) orderdetail.couponcode == coupon;
+        if (coupon) orderdetail.couponcode = coupon;
         const cart = await Cart.findOne({ userid: userId }).populate('products.productid');
-        if(paymentMethod!="COD") orderdetail.paymentstatus = "paid";
+        if (paymentMethod !== "COD") orderdetail.paymentstatus = "paid";
+  
         let subtotal = 0;
+        let walletUsed = 0; // Track the amount used from the wallet
+  
+       
   
         for (const product of cart.products) {
           const { quantity, productid } = product;
@@ -72,29 +74,49 @@ async function checkStock(userId) {
           );
         }
   
-        orderdetail.subtotal = subtotal;
+        // Deduct the walletUsed amount from the subtotal
+        orderdetail.subtotal = subtotal - walletUsed;
+  
         await orderdetail.save();
         await Cart.findOneAndDelete({ userid: userId });
   
         res.send({ message: '1' });
+        const wallet = await Wallet.findOne({ userid: userId });
+  
+        if (wallet && wallet.balance >= parsedTotal) {
+          walletUsed = parsedTotal;
+          wallet.balance -= parsedTotal;
+          wallet.orderDetails.push({
+            orderid: orderdetail._id,
+            message: "Order placed",
+            amount: parsedTotal,
+            date: new Date(),
+            type: "Debit",
+          });
+        } else {
+          res.send({ message: '0', msg: 'Insufficient balance in the wallet' });
+          return;
+        }
+  
+        await wallet.save();
       } else {
         res.send({ message: '0', msg: 'Products are out of stock' });
       }
     } catch (error) {
-      console.log(error.message);
-      res.status(500).send('An error occurred while placing the order.');
+      res.status(404).render("error", { error: error.message });
     }
   };
+  
 
 
   const createorder = async (req, res) => {
     try {
-      console.log("oooiiii");
+      
       const user = req.session.user;
       const amount = parseInt(req.body.amount) * 100;
       let flag = await checkStock(user);
       if (flag == 0) {
-        console.log("iiiiiii");
+        
         const options = {
           amount: amount,
           currency: "INR",
@@ -102,7 +124,7 @@ async function checkStock(userId) {
         };
         razorpayInstance.orders.create(options, (err, order) => {
           if (!err) {
-            console.log("lllllllllll");
+            
             res.status(200).send({
               success: true,
               msg: "Order Created",
@@ -115,7 +137,7 @@ async function checkStock(userId) {
             });
             
           } else {
-            console.log("Error:", err); // Log the actual error object
+            
             res.status(400).send({
               message: true,
               success: false,
@@ -127,19 +149,20 @@ async function checkStock(userId) {
         res.send({ message: false, msg: "some products are out of stock" });
       }
     } catch (error) {
-      console.log(error.message);
+      res.status(404).render("error", { error: error.message });
     }
   };
   
 
   const cancelRequest = async (req, res) => {
     try {
-      console.log("hiiiii");
+     
       let user = req.session.user;
       let orderid = req.body.id;
-      console.log("Order ID:", orderid);
+      let reason = req.body.reason;
+      console.log(reason);
       let order = await Order.findById(orderid);
-      console.log("Order:", order);
+      
       if (order.paymentMethod !== "COD") {
         const userwallet = await Wallet.findOne({ userid: user._id });
         if (userwallet) {
@@ -183,35 +206,53 @@ async function checkStock(userId) {
       }
       order = await Order.findByIdAndUpdate(
         orderid,
-        { status: "Cancelled" },
-        { new: true }
-      );
-      console.log("Updated Order:", order);
+        { status: "Cancelled" ,
+        reason:reason,
+      },
+        
+        { new: true },
+        
+      );    
+      
       if (order) {
         res.send({ message: "1" });
       } else {
         res.send({ message: "0" });
       }
     } catch (error) {
-      console.log(error.message);
+      res.status(404).render("error", { error: error.message });
     }
   };
 
   const returnRequest = async(req,res)=>{
+    
     try {
-      let orderid = req.body.id;
-      let order = await Order.findByIdAndUpdate(
-        orderid,
-        {status:"Return Requested"},
-        {new:true}
-      );
-      if(order){
-        res.send({message:"1"})
+      
+      const orderid = req.body.id;
+      const order = await Order.findById(orderid);
+  
+      if (!order) {
+        
+        return res.send({ message: "0" });
+      }
+  
+      const orderDate = moment(order.deliverydate);
+      const currentDate = moment();
+      const daysDifference = currentDate.diff(orderDate, 'days');
+  
+      if (daysDifference > 7) {
+        
+        res.send({ message: "0" });
       }else{
-        res.send({message:"0"})
+  
+      order.status = "Return Requested";
+      await order.save();
+      
+  
+      res.send({ message: "1" });
       }
     } catch (error) {
-      console.log(error.message);
+      res.status(404).render("error", { error: error.message });
     }
   }
   
@@ -281,7 +322,7 @@ async function checkStock(userId) {
         res.send({ message: "0" });
       }
     } catch (error) {
-      console.log(error.message);
+      res.status(404).render("error", { error: error.message });
     }
   };
   

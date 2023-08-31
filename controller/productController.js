@@ -14,12 +14,12 @@ const productdetail = async (req, res) => {
         const session = req.session.loggedIn
         const id=req.query.id
     const productdata = await Products.findOne({_id:id})
-    console.log(productdata);
+    
      res.render('productdetail',{product:productdata,category:categorydata,session,messageAlert: req.flash("messageAlert"), success: req.flash("success")})
-     console.log("productdetail page rendering");
+     
 
     } catch (error) {
-        console.log(error.message);
+       res.status(404).render("error", { error: error.message });
     }
   
 };
@@ -29,17 +29,19 @@ const categoryproduct = async(req,res)=>{
     try {
     
     const id =req.query.id
+    const allcategorydata = await Category.find({isVerified:{$ne:false}})
+
     const categorydata = await Category.find({_id:id})
-    console.log(categorydata);
+   
     const categoryname = categorydata[0].categoryname
-    console.log(categoryname);
+    
     const productdata = await Products.find({category:categoryname})
-    console.log(productdata);
+    
     const session = req.session.loggedIn
-    res.render('allproducts',{product:productdata,category:categorydata,session})
-    console.log("allproducts rendering");
+    res.render('allproducts',{product:productdata,category:categorydata,session,cat:allcategorydata})
+    
     } catch (error) {
-        console.log(error.message);
+       res.status(404).render("error", { error: error.message });
     }
 }
 
@@ -49,11 +51,11 @@ const loadproductlist = async(req,res)=>{
     try {
         const categorylist = await Category.find({isVerified:{$ne:false}})
         const productData = await Products.find()
-        console.log(productData);
+        
 
         res.render('product_list',{product:productData,category:categorylist,error:"your products"})
     } catch (error) {
-        console.log(error.message);
+       res.status(404).render("error", { error: error.message });
     }
  }
 
@@ -64,7 +66,7 @@ const loadaddproduct= async(req,res)=>{
         const categorylist = await Category.find({isVerified:{$ne:false}})
         res.render('add_new_product',{category:categorylist})
     } catch (error) {
-        console.log(error.message);
+       res.status(404).render("error", { error: error.message });
     }
 }
 
@@ -72,10 +74,10 @@ const loadaddproduct= async(req,res)=>{
 
 const addproduct = async (req, res) => {
     try {
-        console.log("enteerrrrr");
+        
       const files = req.files; // Retrieve the uploaded files
       const productImages = [];
-  console.log(files);
+  
       files.forEach((file) => {
         productImages.push(file.filename);
       });
@@ -99,11 +101,11 @@ const addproduct = async (req, res) => {
   
       await product.save();
   
-      console.log('Product Images:', productImages);
+      
   
       res.redirect('/admin/productlist');
     } catch (error) {
-      console.log(error.message);
+     res.status(404).render("error", { error: error.message });
       // Handle any errors
     }
   };
@@ -127,7 +129,7 @@ const loadeditproduct = async (req, res) => {
         });
       }
     } catch (error) {
-      console.log(error.message);
+     res.status(404).render("error", { error: error.message });
     }
   };
   
@@ -183,7 +185,7 @@ const editproduct = async (req, res) => {
         });
       }
     } catch (error) {
-      console.log(error.message);
+     res.status(404).render("error", { error: error.message });
     }
   };
   
@@ -199,7 +201,7 @@ const disableproduct = async(req,res)=>{
         res.send({message:"Unlisted product sucessfully"})
        }
     } catch(error) {
-        console.log(error.message);
+       res.status(404).render("error", { error: error.message });
     }
 }
 
@@ -214,19 +216,19 @@ const enableproduct = async(req,res)=>{
             res.send({message:"Listed product sucessfully"})
         }
     } catch (error) {
-        console.log(error.message);
+       res.status(404).render("error", { error: error.message });
     }
 }
 
 // Adminside product deleting
  const removeproduct = async(req,res)=>{
-    console.log("hihiiiii");
+    
     try {
         const productid=req.query.id
         await Products.deleteOne({_id:productid})
         res.redirect("/admin/productlist")
     } catch (error) {
-        console.log(error.message);
+       res.status(404).render("error", { error: error.message });
     }
  } 
 

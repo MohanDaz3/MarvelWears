@@ -3,6 +3,7 @@ const Cart = require("../models/cartModel");
 const Category = require("../models/categoryModel");
 const Products = require("../models/productModel");
 const Coupons = require("../models/couponModel");
+const Wallet = require("../models/walletModel")
 const bycrpt = require("bcrypt");
 const mongoose = require("mongoose");
 
@@ -20,7 +21,7 @@ const cartGet = async (req, res) => {
 
     res.send({ isOk: true, cart });
   } catch (err) {
-    console.trace(err);
+    
     res.send({ isOk: false, error: err.message });
   }
 };
@@ -44,7 +45,7 @@ const cartProductDelete = async (req, res) => {
     }
     res.send({isOk: true});
   } catch(err) {
-    console.trace(err);
+    
     res.send({isOk: false, error: err.message});
   }
 };
@@ -53,11 +54,11 @@ const cartProductDelete = async (req, res) => {
 
 const cartload = async (req, res) => {
   try {
-    console.log("hiiiiii");
+    
     const session = req.session.loggedIn;
     const userdata = req.session.user;
     const userData = await User.findOne({ _id: userdata._id });
-    console.log(userData);
+    
     const categorydata = await Category.find({ isVerified: { $ne: false } });
     const cartdata = await Cart.findOne({ userid: userData }).populate(
       "products.productid"
@@ -68,9 +69,9 @@ const cartload = async (req, res) => {
       category: categorydata,
       session,
     });
-    console.log("hloooo");
+    
   } catch (error) {
-    console.log(error.message);
+    res.status(404).render("error", { error: error.message });
   }
 };
 
@@ -78,7 +79,7 @@ const cartload = async (req, res) => {
 
 const addcart = async (req, res) => {
   try {
-    console.log("entered");
+    
     let flag = 0;
     const productid = req.query.id;
     const quantity = parseInt(req.query.qty); // Parse the quantity as an integer
@@ -88,7 +89,7 @@ const addcart = async (req, res) => {
     let productqty = productdata.stock;
 
     if (productqty >= quantity) {
-      console.log("okee");
+      
       const cart = await Cart.findOne({ userid: userdata._id });
 
       if (cart) {
@@ -126,7 +127,7 @@ const addcart = async (req, res) => {
       res.redirect(req.get("referer"));
     }
   } catch (error) {
-    console.log(error.message);
+   res.status(404).render("error", { error: error.message });
   }
 };
 
@@ -154,8 +155,9 @@ const increment = async (req, res) => {
       res.send({ message: "0" });
     }
   } catch (error) {
-    console.log("error in increment", error);
+    
     res.send({ message: "Error occurred" });
+    res.status(404).render("error", { error: error.message });
   }
 };
 
@@ -182,8 +184,9 @@ const decrement = async (req, res) => {
       res.send({ message: "0" });
     }
   } catch (error) {
-    console.log("error in decrement", error);
+    
     res.send({ message: "Error occurred" });
+    res.status(404).render("error", { error: error.message });
   }
 };
 
@@ -211,11 +214,12 @@ const deleteProCart = async (req, res) => {
 
     // Send a success response to the client
     res.json({ success: true, message: "Product deleted successfully" });
-    console.log("Deleted product from cart");
+    ;
   } catch (error) {
     console.log(error.message);
     // Send an error response to the client
     res.status(500).json({ success: false, error: "Error deleting product" });
+    res.status(404).render("error", { error: error.message });
   }
 };
 
@@ -231,6 +235,7 @@ const cartcheckout = async (req, res) => {
     const cartData = await Cart.findOne({ userid: userData._id }).populate(
       "products.productid"
     );
+    const wallet = await Wallet.findOne({userid:userData._id})
 
     if (cartData) {
       res.render("checkout", {
@@ -240,12 +245,13 @@ const cartcheckout = async (req, res) => {
         category: categorydata,
         coupons: coupon,
         session: session,
+        walletData:wallet,
       });
     } else {
       res.redirect("/cart");
     }
   } catch (error) {
-    res.render("error", { error: error.message });
+    res.status(404).render("error", { error: error.message });
   }
 };
 
@@ -255,9 +261,7 @@ const validatecoupon = async (req, res) => {
     let user = req.session.user;
     let orderAmount = req.body.amount;
     const coupon = await Coupons.findOne({ couponCode: couponCode });
-    console.log(couponCode);
-    console.log(orderAmount);
-    console.log(coupon);
+    
     if (coupon) {
       if (!coupon.usedUsers.includes(user._id)) {
         if (orderAmount >= parseInt(coupon.minimumAmount)) {
@@ -275,7 +279,7 @@ const validatecoupon = async (req, res) => {
       res.send({ msg: "2", message: "Invalid Coupon Code" });
     }
   } catch (error) {
-    console.log(error.message);
+    res.status(404).render("error", { error: error.message });
   }
 };
 

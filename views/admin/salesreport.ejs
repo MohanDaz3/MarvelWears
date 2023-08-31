@@ -1,0 +1,521 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <title>MW.com Dashboard</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="/static/admin/imgs/theme/favicon.svg"> -->
+    <!-- Template CSS -->
+    <link href="/static/admin/css/main.css" rel="stylesheet" type="text/css" />
+		 <style>
+           
+ .logo {
+  font-family: 'Arial', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.marvel {
+  font-size: 30px;
+  
+  color: #000000; /* black color */
+}
+
+.wears {
+  font-size: 30px;
+  color: #ff0000;/* red color */
+}
+
+         </style>
+
+</head>
+
+<body>
+    <div class="screen-overlay"></div>
+    <aside class="navbar-aside" id="offcanvas_aside">
+        <div class="aside-top">
+            <!-- <a href="index.html" class="brand-wrap">
+                <img src="/static/admin/imgs/theme/marvel_logo.svg" class="logo" alt="Evara Dashboard">
+            </a> -->
+            <div class="logo">
+                <span class="marvel">Shop</span>
+                <span class="wears">Marvels</span>
+              </div>
+              
+            <div>
+                <button class="btn btn-icon btn-aside-minimize"> <i class="text-muted material-icons md-menu_open"></i> </button>
+            </div>
+        </div>
+        <nav>
+            <ul class="menu-aside">
+                <li class="menu-item active">
+                    <a class="menu-link" href="/admin/dashboard"> <i class="icon material-icons md-home"></i>
+                        <span class="text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/users"><i class="icon material-icons md-person"></i>
+                        <span class="text">users</span>
+                    </a>
+                    <!-- <div class="submenu">
+                        <a href="page-products-list.html">Product List</a>
+                        <a href="page-products-grid.html">Product grid</a>
+                        <a href="page-products-grid-2.html">Product grid 2</a>
+                        <a href="page-categories.html">Categories</a>
+                    </div> -->
+                </li>
+                <li class="menu-item ">
+                    <a class="menu-link" href="/admin/orders"> <i class="icon material-icons md-shopping_cart"></i>
+                        <span class="text">Orders</span>
+                    </a>
+                    <!-- <div class="submenu">
+                        <a href="page-orders-1.html">Order list 1</a>
+                        <a href="page-orders-2.html">Order list 2</a>
+                        <a href="page-orders-detail.html">Order detail</a>
+                    </div> -->
+                </li>
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="page-sellers-cards.html"><i class="icon material-icons md-shopping_bag"></i>
+                         <!-- <i class="icon material-icons md-store"></i> -->
+                        <span class="text">Products</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="/admin/productlist">Product List</a>
+                        <a href="/admin/addproduct">Add products</a>
+                        <!-- <a href="page-seller-detail.html">Seller profile</a> -->
+                    </div>
+                </li>
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href=""> <i class="icon material-icons md-add_box"></i>
+                        <span class="text">Categories</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="/admin/categorylist">Category list</a>
+                        <a href="/admin/addcategory">Add category</a>
+                        <!-- <a href="page-form-product-3.html">Add product 3</a>
+                        <a href="page-form-product-4.html">Add product 4</a> -->
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="/admin/couponList"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text">Coupons</span>
+                    </a>
+                    <div class="submenu">
+                        <!-- <a href="page-transactions-1.html">Coupon List</a> -->
+                        <!-- <a href="page-transactions-2.html">Transaction 2</a> -->
+                    </div>
+                </li>
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text">Banner</span>
+                    </a>
+                    <div class="submenu">
+                        <a href="page-account-login.html">User login</a>
+                        <a href="page-account-register.html">User registration</a>
+                        <a href="page-error-404.html">Error 404</a>
+                    </div>
+                </li>
+                <!-- <li class="menu-item">
+                    <a class="menu-link" href="page-reviews.html"> <i class="icon material-icons md-comment"></i>
+                        <span class="text">Reviews</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" href="page-brands.html"> <i class="icon material-icons md-stars"></i>
+                        <span class="text">Brands</span> </a>
+                </li>
+                <li class="menu-item">
+                    <a class="menu-link" disabled href="#"> <i class="icon material-icons md-pie_chart"></i>
+                        <span class="text">Statistics</span>
+                    </a>
+                </li> -->
+            </ul>
+            <hr>
+            <ul class="menu-aside">
+                <li class="menu-item has-submenu">
+                    <a class="menu-link" href="#"> <i class="icon material-icons md-settings"></i>
+                        <span class="text">Settings</span>
+                    </a>
+                    <!-- <div class="submenu">
+                        <a href="page-settings-1.html">Setting sample 1</a>
+                        <a href="page-settings-2.html">Setting sample 2</a>
+                    </div> -->
+                </li>
+                <!-- <li class="menu-item">
+                    <a class="menu-link" href="page-blank.html"> <i class="icon material-icons md-local_offer"></i>
+                        <span class="text"> Starter page </span>
+                    </a>
+                </li> -->
+            </ul>
+            <br>
+            <br>
+        </nav>
+    </aside>
+    <main class="main-wrap">
+        <header class="main-header navbar">
+            <div class="col-search">
+                <form class="searchform">
+                    <div class="input-group">
+                        <!-- <input list="search_terms" type="text" class="form-control" placeholder="Search term"> -->
+                        <!-- <button class="btn btn-light bg" type="button"> <i class="material-icons md-search"></i></button> -->
+                    </div>
+                    <datalist id="search_terms">
+                        <option value="Products">
+                        <option value="New orders">
+                        <option value="Apple iphone">
+                        <option value="Ahmed Hassan">
+                    </datalist>
+                </form>
+            </div>
+            <div class="col-nav">
+                <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="material-icons md-apps"></i> </button>
+                <ul class="nav">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link btn-icon" href="#">
+                            <i class="material-icons md-notifications animation-shake"></i>
+                            <span class="badge rounded-pill">3</span>
+                        </a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link btn-icon darkmode" href="#"> <i class="material-icons md-nights_stay"></i> </a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a href="#" class="requestfullscreen nav-link btn-icon"><i class="material-icons md-cast"></i></a>
+                    </li> -->
+                    <!-- <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownLanguage" aria-expanded="false"><i class="material-icons md-static"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownLanguage">
+                            <a class="dropdown-item text-brand" href="#"><img src="/static/admin/imgs/theme/flag-us.png" alt="English">English</a>
+                            <a class="dropdown-item" href="#"><img src="/static/admin/imgs/theme/flag-fr.png" alt="Français">Français</a>
+                            <a class="dropdown-item" href="#"><img src="/static/admin/imgs/theme/flag-jp.png" alt="Français">日本語</a>
+                            <a class="dropdown-item" href="#"><img src="/static/admin/imgs/theme/flag-cn.png" alt="Français">中国人</a>
+                        </div> -->
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownAccount" aria-expanded="false"> <img class="img-xs rounded-circle" src="" alt="Admin"></a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownAccount">
+                            <a class="dropdown-item" href="#"><i class="material-icons md-perm_identity"></i>Edit Profile</a>
+                            <!-- <a class="dropdown-item" href="#"><i class="material-icons md-settings"></i>Account Settings</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-account_balance_wallet"></i>Wallet</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-receipt"></i>Billing</a>
+                            <a class="dropdown-item" href="#"><i class="material-icons md-help_outline"></i>Help center</a> -->
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="/admin/logout"><i class="material-icons md-exit_to_app"></i>Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <main class="main">
+            <section class="content-main">
+              <div class="content-header">
+                <div>
+                  <h2 class="content-title card-title">Sales Report</h2>
+                </div>
+              </div>
+              <div class="card mb-4">
+                <header class="card-header">
+                  <!-- Filter options can be added here if needed -->
+                  <div style="padding-left: 30px; padding-right: 30px;">
+        
+                    <div class="container-fluid p-0">
+                      <div class="row">
+                        <div class="col-md-12 d-flex justify-content-end">
+                          <div class="me-2">
+        
+        
+                            <div class="me-2">
+                              <button type="button" id="btn-print-this" class="btn btn-brand btn-icon ">
+                                <i class="bi bi-file-earmark-pdf-fill"></i> PDF
+                              </button>
+        
+                              <button type="button" onclick="convertTableToExcel()" class="btn btn-brand btn-icon ">
+                                <i class="bi bi-file-earmark-excel-fill"></i> Excel
+                              </button>
+                            </div>
+        
+                          </div>
+                        </div>
+        
+                </header>
+        
+        
+                <div class="card-body">
+                  <div class="filter-section">
+                    <label for="from-date">From Date:</label>
+                    <input type="date" id="from-date" name="from-date">
+        
+                    <label for="to-date">To Date:</label>
+                    <input type="date" id="to-date" name="to-date">
+        
+                    <button id="filter-btn" class="btn btn-brand">Filter</button>
+                    <button id="reset-btn" class="btn btn-brand">Reset</button>
+                  </div>
+        
+                  <div class="table-responsive">
+                    <table id="order-table" class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>#ID</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">ProductName</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">MOD</th>
+                          <th scope="col">Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% orders.forEach(function(order) { %>
+                          <% order.products.forEach(function(products) { %>
+                            <% if (order.status==="Delivered" ) { %>
+                              <tr>
+                                <td>
+                                  <%= order._id.toString().substr(-5) %>
+                                </td>
+                                <td><b>
+                                    <%= order.userid.Firstname %>
+                                  </b></td>
+                                <td>
+                                  <%= products.productid.productname %>
+                                </td>
+                                <td>
+                                  <%= new Date(order.orderdate).toLocaleDateString() %>
+                                </td>
+                                <td>
+                                  <%= order.status %>
+                                </td>
+                                <td>
+                                  <%= order.totalAmount %>
+                                </td>
+                              </tr>
+                              <% } %>
+                                <% }); %>
+                                  <% }); %>
+                      </tbody>
+                    </table>
+        
+        
+                  </div>
+                </div>
+              </div>
+            </section>
+          </main>
+
+        <footer class="main-footer font-xs">
+            <div class="row pb-30 pt-15">
+                <div class="col-sm-6">
+                    <script>
+                    document.write(new Date().getFullYear())
+                    </script> ©, Marvel wears.com
+                </div>
+                <div class="col-sm-6">
+                    <div class="text-sm-end">
+                        All rights reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+    <script>
+        $(document).ready(function () {
+          $('#btn-print-this').click(function () {
+            const tableHTML = $('.table-responsive').html();
+            const popupWindow = window.open('', '_blank', 'width=700,height=600');
+            popupWindow.document.open();
+            popupWindow.document.write(`
+                <html>
+                <head>
+                  <title>Print</title>
+                  <style>
+                    @media print {
+                      body * {
+                        visibility: hidden;
+                      }
+                      .table-popup, .table-popup * {
+                        visibility: visible;
+                      }
+                      .table-popup {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        overflow: auto;
+                      }
+                    }
+                  </style>
+                </head>
+                <body>
+                  <div class="table-popup">
+                    ${tableHTML}
+                  </div>
+                </body>
+                </html>
+              `);
+            popupWindow.document.close();
+            popupWindow.print();
+          });
+        });
+      </script>
+
+<script>
+    $(document).ready(function () {
+      // Select the table and the "Total" column cells
+      const table = $('#order-table');
+      const totalCells = table.find('tbody td:nth-child(6)'); // Assuming "Total" is the 6th column
+
+      // Calculate the sum of the "Total" column
+      let sum = 0;
+      totalCells.each(function () {
+        const value = parseFloat($(this).text());
+
+        // Add the value to the sum if it is a valid number
+        if (!isNaN(value)) {
+          sum += value;
+        }
+      });
+
+      // Add the "Total Sales" row to the table
+      //   const totalRow = $('<tr>').append('<td colspan="5"><b>Total Sales</b></td><td><b>' + sum + '</b></td>');
+      const totalRow = $('<tr>').append('<td colspan="5"><b><span style="font-size: 16px;">Total Sales</span></b></td><td><b><span style="font-size: 16px;">' + sum + '</span></b></td>');
+
+      table.find('tbody').append(totalRow);
+
+
+
+
+      $('#filter-btn').click(function () {
+        const fromDate = new Date($('#from-date').val());
+        const toDate = new Date($('#to-date').val());
+
+        // Hide all rows initially
+        table.find('tbody tr').hide();
+
+        // Filter rows based on the date range
+        table.find('tbody tr').each(function () {
+          const dateString = $(this).find('td:nth-child(4)').text(); // Assuming "Date" is the 4th column
+          const date = moment(dateString, 'D/M/YYYY').toDate();
+          console.log(date);
+          if (date >= fromDate && date <= toDate) {
+            $(this).show();
+          }
+        });
+      });
+
+      $('#reset-btn').click(function () {
+        // Reset the date inputs and show all rows
+        $('#from-date').val('');
+        $('#to-date').val('');
+        table.find('tbody tr').show();
+      });
+
+    });
+  </script>
+
+   <!-------------------------- CONVERTING TABLE TO EXCEL---------- -->
+
+   <script>
+    function convertTableToExcel() {
+      // Select the table element
+      const table = document.getElementById('order-table');
+
+      // Prepare data array
+      const data = [];
+
+      // Add table headers to the data array
+      const headers = [];
+      for (let i = 0; i < table.rows[0].cells.length; i++) {
+
+        headers.push(table.rows[0].cells[i].textContent);
+
+      }
+      data.push(headers);
+
+      // Iterate through each row of the table (excluding the header row)
+      for (let i = 1; i < table.rows.length; i++) {
+        const row = table.rows[i];
+        const rowData = [];
+
+        // Iterate through each cell of the row
+        for (let j = 0; j < row.cells.length; j++) {
+          rowData.push(row.cells[j].textContent);
+
+        }
+
+        // Add row data to the data array
+        data.push(rowData);
+      }
+
+      // Create a new workbook
+      const workBook = XLSX.utils.book_new();
+
+      // Create a new worksheet
+      const workSheet = XLSX.utils.aoa_to_sheet(data);
+
+      // Add the worksheet to the workbook
+      XLSX.utils.book_append_sheet(workBook, workSheet, 'Order Data');
+
+      // Convert the workbook to a binary string
+      const excelData = XLSX.write(workBook, { bookType: 'xlsx', type: 'binary' });
+
+      // Save the binary string as a file
+      saveAsExcelFile(excelData, 'orderData.xlsx');
+    }
+
+    function saveAsExcelFile(data, fileName) {
+      const blob = new Blob([s2ab(data)], { type: 'application/octet-stream' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function s2ab(s) {
+      const buf = new ArrayBuffer(s.length);
+      const view = new Uint8Array(buf);
+      for (let i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xff;
+      return buf;
+    }
+  </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.4/dist/axios.min.js"></script>
+    <script src="/static/admin/js/vendors/jquery-3.6.0.min.js"></script>
+    <script src="/static/admin/js/vendors/bootstrap.bundle.min.js"></script>
+    <script src="/static/admin/js/vendors/select2.min.js"></script>
+    <script src="/static/admin/js/vendors/perfect-scrollbar.js"></script>
+    <script src="/static/admin/js/vendors/jquery.fullscreen.min.js"></script>
+    <script src="/static/admin/js/vendors/chart.js"></script>
+    <!-- Main Script -->
+    <script src="/static/admin/js/main.js" type="text/javascript"></script>
+    <script src="/static/admin/js/custom-chart.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+</body>
+
+
+
+</html>

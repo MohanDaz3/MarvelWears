@@ -43,6 +43,10 @@ const orderSchema = mongoose.Schema(
             type:String,
             default:"pending",
         },
+        reason:{
+            type:String,
+            
+        },
         Shippingaddress:{
             type:ObjectId,
             required:true
@@ -59,6 +63,7 @@ const orderSchema = mongoose.Schema(
             type:String,
             default:"unpaid",
            },
+           
        },
        {versionkey:false}
 );

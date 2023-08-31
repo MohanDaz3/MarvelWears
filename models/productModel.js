@@ -37,7 +37,11 @@ const productSchema = mongoose.Schema({
     isBlocked:{
         type:Boolean,
         default:false,
-    }
+    },
+    isVerified:{
+        type:Boolean,
+        default:true,
+    },
 })
 
 module.exports = mongoose.model('Products',productSchema)

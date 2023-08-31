@@ -16,7 +16,7 @@ const categorylist = async(req,res)=>{
         res.render('category',{data:categoryData,error:"Your Categories"})
 
     } catch (error) {
-        console.log(error.message);
+        res.status(404).render("error", { error: error.message });
     }
 }
 // adminside add category page displaying
@@ -24,9 +24,9 @@ const categorylist = async(req,res)=>{
 const loadAddcategory = async(req,res)=>{
     try {
         res.render('add_category')
-        console.log("adminside add category page is rendering");
+        
     } catch (error) {
-        console.log(error.message);
+        res.status(404).render("error", { error: error.message });
     }
    
 }
@@ -44,7 +44,7 @@ const loadAddcategory = async(req,res)=>{
             const categoryexist = await Category.findOne({
                 categoryname: { $regex: new RegExp('^' + lowerCategoryName + '$', 'i') }
               });
-            console.log(categoryexist);
+            
             if(!categoryexist){
                 
                 const category = new Category({
@@ -59,7 +59,7 @@ const loadAddcategory = async(req,res)=>{
                 res.render('add_category',{notice:"Category already Exists"})
             }
         } catch (error) {
-            
+            res.status(404).render("error", { error: error.message });
         }
  }
 
@@ -71,7 +71,7 @@ const removecategory = async(req,res)=>{
     await Category.deleteOne({_id:categoryid})
     res.redirect('/admin/categorylist')
    } catch (error) {
-    console.log(error.message);
+    res.status(404).render("error", { error: error.message });
    }
 }
 
@@ -79,16 +79,16 @@ const removecategory = async(req,res)=>{
 const disablecategory=async(req,res)=>{
     try {
         const id= req.query.id
+        const category = await Category.findOne({_id:id})
+        // console.log(category,category.categoryname);
+        await Products.updateMany({category:category.categoryname},{isVerified:false})
         const categorydata = await Category.findByIdAndUpdate({_id:id},{$set:{isVerified:false}})
-        
-    
         if(categorydata){
             res.send({message:"unlisted category Successfully"})
         }
     } catch (error) {
-        console.log(error.message);
+        res.status(404).render("error", { error: error.message });
     }
-   
 }
 
 // adminside enabling category
@@ -96,14 +96,15 @@ const disablecategory=async(req,res)=>{
 const enablecategory = async(req,res)=>{
     try {
         const id=req.query.id
+        const category = await Category.findOne({_id:id})
+        
+        const productdata =await Products.updateMany({category:category.categoryname},{isVerified:true})
         const categorydata = await Category.findByIdAndUpdate({_id:id},{$set:{isVerified:true}})
-       
-
        if(categorydata){
         res.send({message:"listed category Successfully"})
     }
     } catch (error) {
-        console.log(error.message);
+        res.status(404).render("error", { error: error.message });
     }
 }
 
@@ -112,7 +113,7 @@ const loadeditcategory = async(req,res)=>{
     try {
         const id=req.query.id
         const categorydata=await Category.findOne({_id:id})
-        console.log(categorydata);
+        
         
         if(categorydata){
             res.render('edit_category',{data:categorydata})
@@ -121,7 +122,7 @@ const loadeditcategory = async(req,res)=>{
         }
         
     } catch (error) {
-        console.log(error.message);
+        res.status(404).render("error", { error: error.message });
     }
 }
 
@@ -146,7 +147,7 @@ const editcategory=async(req,res)=>{
         }
 
     } catch (error) {
-        console.log((error.message));
+        res.status(404).render("error", { error: error.message });
     }
 }
 // **************************************ends**********************************

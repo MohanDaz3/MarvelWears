@@ -9,6 +9,7 @@ const adminController = require('../controller/adminController')
 const categoryController = require('../controller/categoryController')
 const productController = require('../controller/productController')
 const orderController = require('../controller/orderController')
+const salesController = require('../controller/salesController')
 
 admin_router.use('/static',express.static('public'))
 admin_router.use('/assets',express.static('public'))
@@ -34,6 +35,9 @@ admin_router.get('/dashboard',adminController.homepage)
 
 admin_router.get('/logout',adminController.logout)
 
+admin_router.get("/chartdata",adminController.chartdata)
+admin_router.get("/chartdata2",adminController.chartdata2)
+admin_router.get("/salesreport",salesController.salesreport)
 //************************user************************
 
 admin_router.get('/users',adminController.userList)

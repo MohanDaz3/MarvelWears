@@ -67,7 +67,7 @@
                             </ul>
                         </li> -->
 
-						<li class="language">
+						<li class="language" >
                             <a href="#">
                                 English
                                 <i class="fa fa-angle-down"></i>
@@ -101,10 +101,10 @@
 					
 					<!-- Logo desktop -->		
 					<!-- <a href="#" class="logo">
-						<img src="images/icons/logo-01.png" alt="IMG-LOGO">
+						<img src="/static/images/icons/logo-02.png" alt="IMG-LOGO">
 					</a> -->
 					<div class="logo_container">
-						<a href="#">Shop<span>Marvels</span></a>
+						<a href="#">Marvel<span>Wears</span></a>
 					</div>
 
 					<!-- Menu desktop -->
@@ -113,12 +113,12 @@
 							<li>
 								<a href="/">Home</a>
 							</li>
-							<li class="active-menu">
-								<a href="index.html">Shop</a>
+							<li class="">
+								<a href="#">Shop</a>
 								<ul class="sub-menu">
 									<% category.forEach(function(data) { %>
 									
-									<li><a href=""><%=data.categoryname%></a></li>
+									<li><a href="/categoryproducts?id=<%=data._id%>"><%=data.categoryname%></a></li>
 
 									<% }) %>
 									
@@ -128,7 +128,7 @@
 							
 
 							<li class="label1" data-label1="hot">
-								<a href="shoping-cart.html">Features</a>
+								<a href="#">Features</a>
 							</li>
 
 							<!-- <li>
@@ -136,11 +136,11 @@
 							</li> -->
 
 							<li>
-								<a href="about.html">About</a>
+								<a href="#">About</a>
 							</li>
 
 							<li>
-								<a href="contact.html">Contact</a>
+								<a href="#">Contact</a>
 							</li>
 						</ul>
 					</div>	
@@ -160,7 +160,7 @@
 						</a>
 					</div>
 					<%if(session){%>
-                    <li class="account">
+                    <li class="account icon-header-item cl2 hov-cl1 trans-04">
                         <a href="#">
                             <i class="fa fa-user"></i>  My Account
                             <i class="fa fa-angle-down"></i>
@@ -196,6 +196,9 @@
             <div class="logo_mobile">
                 <a href="#">Shop<span>Marvel</span></a>
             </div>
+			<!-- <div class="logo_container logo-mobile">
+				<a href="#">Marvel<span>Wears</span></a>
+			</div> -->
 
 			<!-- Icon header -->
 			<div class="wrap-icon-header flex-w flex-r-m m-r-15">
@@ -203,14 +206,38 @@
 					<i class="zmdi zmdi-search"></i>
 				</div>
 
-				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10  js-show-cart">
+				<div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 js-show-cart">
 					<a href="/cart" style="color: black;"><i class="zmdi zmdi-shopping-cart"></i></a> 
 				</div>
 
 				<a href="#" class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-r-11 p-l-10 " >
 					<i class="zmdi zmdi-favorite-outline"></i>
 				</a>
+				<%if(session){%>
+					<li class="account icon-header-item cl2 hov-cl1 trans-04 p-t-10">
+						<a href="#">
+							<i class="fa fa-user"></i>
+							<i class="fa fa-angle-down"></i>
+						</a>
+						<ul class="account_selection">
+							<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+							<li><a href="/logout"><i class="fa fa-sign-in" aria-hidden="true"></i>Logout</a></li>
+						</ul>
+					</li>
+					<%}else{%>
+						<li class="account">
+							<a href="#">
+								<i class="fa fa-user"></i> 
+								<i class="fa fa-angle-down"></i>
+							</a>
+							<ul class="account_selection">
+								<li><a href="/login"><i class="fa fa-sign-in" aria-hidden="true"></i>Sign In</a></li>
+								<li><a href="/signup"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a></li>
+							</ul>
+						</li>
+					<%}%>
 			</div>
+			
 
 			<!-- Button show menu -->
 			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
@@ -408,7 +435,7 @@
 								
 							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
 								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									NEW Marvel Editions
+									Marvel Editions
 								</h2>
                                 <span class="ltext-101 cl2 responsub">
 									Choose Marvel N Be An Hero
@@ -416,7 +443,7 @@
 							</div>
 								
 							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+								<a href="" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
 									Shop Now
 								</a>
 							</div>
@@ -559,11 +586,11 @@
 						 Filter
 					</div>
 
-					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+					<!-- <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
 						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
 						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 						Search
-					</div>
+					</div> -->
 				</div>
 				
 				<!-- Search  -->
@@ -586,30 +613,8 @@
 							</div>
 
 							<ul>
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Default
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Popularity
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04">
-										Average rating
-									</a>
-								</li>
-
-								<li class="p-b-6">
-									<a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-										Newness
-									</a>
-								</li>
-
+									
+												
 								<li class="p-b-6">
 									<a href="#" class="filter-link stext-106 trans-04">
 										Price: Low to High
@@ -624,7 +629,7 @@
 							</ul>
 						</div>
 
-						<div class="filter-col2 p-r-15 p-b-27">
+						<!-- <div class="filter-col2 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
 								Price
 							</div>
@@ -666,9 +671,9 @@
 									</a>
 								</li>
 							</ul>
-						</div>
+						</div> -->
 
-						<div class="filter-col3 p-r-15 p-b-27">
+						<!-- <div class="filter-col3 p-r-15 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
 								Color
 							</div>
@@ -734,9 +739,9 @@
 									</a>
 								</li>
 							</ul>
-						</div>
+						</div> -->
 
-						<div class="filter-col4 p-b-27">
+						<!-- <div class="filter-col4 p-b-27">
 							<div class="mtext-102 cl2 p-b-15">
 								Tags
 							</div>
@@ -762,7 +767,7 @@
 									Crafts
 								</a>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -1256,7 +1261,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!--===============================================================================================-->
 	<script src="/static/js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.min.js"></script>
+	<% if (locals.noticeAlert) { %>
+		<script>
+		  Swal.fire({
+			icon: 'error',
+			title: '<%=noticeAlert%>',
+			showConfirmButton: false,
+			timer: 2000
+		  });
+		</script>
+		<% } %> 
+		<% if (locals.notice) { %>
+			<script>
+			  Swal.fire({
+				icon: 'success',
+				title: '<%=notice%>',
+				showConfirmButton: true,
+				timer: 2000
+			  });
+			</script>
+			<% } %> 
 </body>
 </html>
 

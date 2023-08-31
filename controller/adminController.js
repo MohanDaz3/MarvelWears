@@ -27,7 +27,7 @@ const logout = async(req,res)=>{
     try {
         req.session.destroy()
         res.redirect('/admin')
-        console.log("logout successfully");
+        
     } catch (error) {
         console.log(error.message);
     }
@@ -38,10 +38,165 @@ const logout = async(req,res)=>{
 
 const homepage = async(req,res)=>{
     try {
-       res.render('dashboard')
-    console.log("admin dashboard is rendering");
+
+        const details = await Order.aggregate([
+            {$match:{status:"Delivered"}},
+            {$group:{_id:null,totalSales:{$sum:"$totalAmount"}}}
+        ])
+        const TotalSales=details[0].totalSales;
+        const ordercount=await Order.find({}).count();
+        const productcount=await Products.find({}).count();
+        const categorycount=await Category.find({}).count();
+        
+        const salesData = await Order.aggregate([
+            {$match:{status:"Delivered"}},
+            {
+                $group:{
+                    _id:{
+                        $dateToString:{
+                            format:"%Y-%m",
+                            date:{$toDate:"$orderdate"},
+                        },
+                    },
+                    totalRevenue:{$sum:"$totalAmount"},
+                },
+            },
+            {$sort:{_id:-1}},
+            {$project:{_id: 0,date:"$_id",totalRevenue:1}},
+            {$limit:7},
+        ]);
+
+        const data=[];
+        const date=[];
+
+        for(const totalRevenue of salesData){
+            data.push(totalRevenue.totalRevenue);
+            const monthName= new Date(totalRevenue.date + "-01").toLocaleString(
+                "en-US",
+                {month:"long"}
+            );
+            date.push(monthName);
+        }
+
+        const monthly=data[0];
+        const current=await Order.aggregate([
+            {
+                $match:{
+                    orderdate:{
+                        $gte:new Date(
+                            new Date().getFullYear(),
+                            new Date().getMonth(),
+                            1
+                        ),
+                        $lt:new Date(
+                            new Date().getFullYear(),
+                            new Date().getMonth() + 1,
+                            1
+                        ),
+                    },
+                },
+            },
+            {
+                $group:{
+                    _id:null,
+                    totalAmount:{
+                        $sum:"$totalAmount",
+                    },
+                },
+            },
+        ]);
+
+        const orders = await Order.find({}).populate("userid").exec();
+       res.render('dashboard',{
+        revenue:TotalSales,
+        order:ordercount,
+        product:productcount,
+        category:categorycount,
+        orders:orders,
+        current:current,
+        monthlysale:monthly,
+       });
+    
     } catch (error) {
+        console.log(error.message);
         // res.status(404).res.render('error',{error:error.message})
+    }
+}
+
+// 
+
+const chartdata=async(req,res)=>{
+    try {
+        const salesdata= await Order.aggregate([
+            {$match:{status:"Delivered"}},
+            {
+                $group:{
+                    _id:{
+                        $dateToString:{
+                            format:"%Y-%m-%d",
+                            date:{$toDate:"$orderdate"},
+                        },
+                    },
+                    totalRevenue:{$sum:"$totalAmount"},
+                },
+            },
+            {$sort:{_id:-1}},
+            {$project:{_id:0,date:"$_id",totalRevenue:1}},
+            {$limit:7},
+        ]);
+        const data =[];
+        const date=[];
+
+        for(const totalRevenue of salesdata){
+            data.push(totalRevenue.totalRevenue);   
+        }
+        for(const items of salesdata){
+            date.push(items.date);
+        }
+        data.reverse();
+        date.reverse();
+        res.send({data:data,date:date})
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+const chartdata2=async(req,res)=>{
+    try {
+        const salesdata= await Order.aggregate([
+            {$match:{status:"Delivered"}},
+            {
+                $group:{
+                    _id:{
+                        $dateToString:{
+                            format:"%Y-%m",
+                            date:{$toDate:"$orderdate"},
+                        },
+                    },
+                    totalRevenue:{$sum:"$totalAmount"},
+                },
+            },
+            {$sort:{_id:-1}},
+            {$project:{_id:0,date:"$_id",totalRevenue:1}},
+            {$limit:7},
+        ]);
+        const data =[];
+        const date=[];
+
+        for(const totalRevenue of salesdata){
+            data.push(totalRevenue.totalRevenue);
+            const monthName = new Date(totalRevenue.date + "-01").toLocaleString(
+                "en-US",
+                {month:"long"}
+            );
+            date.push(monthName)
+        };
+        data.reverse();
+        date.reverse();
+        res.json({date:date,data:data})
+
+    } catch (error) {
+        console.log(error.message);
     }
 }
 
@@ -49,7 +204,7 @@ const homepage = async(req,res)=>{
 const adminlogin = async(req,res)=>{
     try {
         const adminData = await Admin.findOne({adminid:req.body.email})
-        console.log(adminData);
+      
         // const isPasswordMatch = await bycrpt.compare(
         //     req.body.password,
         //     adminData.adminkey
@@ -60,14 +215,14 @@ const adminlogin = async(req,res)=>{
                 req.session.adminid=adminData._id
                 req.session.loggedIn=true
                 res.render('dashboard')
-                console.log("logind successfully and dashboard rendering");
+                
             }else{
                 res.render('login',{notice:"password is inncorrect"})
-                console.log("incorrect paasword");
+                
             }
         }else{
            res.render('login',{notice:"User is not found"})
-           console.log("invalid user");
+         
         }
     } catch (error) {
         // res.status(404).res.render('error',{error:error.message})
@@ -84,7 +239,7 @@ const userList = async(req,res)=>{
     try {
         const userData = await User.find({isAdmin:{$ne:1}})
         res.render('user_list',{user:userData})
-        console.log("Adminside User list rendering");
+        
     } catch (error) {
         console.log(error.message);
     }
@@ -153,17 +308,15 @@ const orderdetail = async (req, res) => {
             })
             .exec();
 
-        console.log(orderdetail);
+        
         const selectedAddressId = orderdetail.Shippingaddress;
-        console.log("dhjtjghchdujhgjgydjytgfdc");
-        console.log(selectedAddressId);
+        
 
         const selectedAddress = orderdetail.userid.address.find((address) => {
             return address._id.equals(selectedAddressId);
         });
 
-        console.log("tduyutfdsutrsjd");
-        console.log(selectedAddress);
+    
 
         res.render("orderdetail", { orderDetail: orderdetail, selectedAddress: selectedAddress });
     } catch (error) {
@@ -190,13 +343,13 @@ const orderdetail = async (req, res) => {
             );
         }
         if(status=="Delivered"){
-            const deliveredDate = new Date();
+            const deliverydate = new Date();
             await Order.findByIdAndUpdate(
                 orderid,
-                {deliveredDate:deliveredDate},
+                {deliverydate:deliverydate},
                 {new:true}
             );
-            const completionTime = moment(deliveredDate).add(7,"days");
+            const completionTime = moment(deliverydate).add(7,"days");
             setTimeout(async()=>{
                 const updatedOrder = await Order.findById(orderid);
                 if(
@@ -246,7 +399,7 @@ const addcoupon = async(req,res)=>{
     const lowercouponCode=couponCode.toLowerCase();
     try {
         const couponexist = await Coupons.findOne({couponCode:{$regex:new RegExp('^' + lowercouponCode + '$','i')}})
-        console.log(couponexist);
+        
         if(!couponexist){
         const coupon = new Coupons({
             couponCode:couponCode,
@@ -334,4 +487,6 @@ module.exports = {homepage,
                 addcoupon,
             editcouponpage,
         editcoupon,
-        deletecoupon}
+        deletecoupon,
+        chartdata,
+        chartdata2}

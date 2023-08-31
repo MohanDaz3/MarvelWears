@@ -2,7 +2,7 @@ const mongoose =require('mongoose')
 
 async function connectToDataBase() {
     mongoose
-      .connect(process.env.dbconnect, { useNewUrlParser: true })
+      .connect(process.env.DB_CONNECT, { useNewUrlParser: true })
       .then(() => {
         console.log("MongoDB Connected");
       })

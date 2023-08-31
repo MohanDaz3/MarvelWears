@@ -43,6 +43,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
 
      <link rel="stylesheet" href="/static/assets/css/style.css">
     <link rel="stylesheet" href="/static/assets/css/skins/skin-demo-8.css">
@@ -685,6 +687,66 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<i class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
+<!-- modal for cancellation reason -->
+<div class="modal fade p-t-120 p-b-20" id="cancelReasonModal" tabindex="-1" role="dialog" aria-labelledby="cancelReasonModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancelReasonModalLabel">Cancellation Reason</h5>
+                <button type="button" class="close" data-dismiss="modal" onclick="dismissModal()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="cancelReasonForm">
+                    <div class="form-group">
+                        <label for="cancellationReason">Select a reason for cancellation:</label>
+                        <select class="form-control" id="cancellationReason" name="cancellationReason">
+                            <option value="late_delivery">Late Delivery</option>
+                            <option value="received_wrong_product">Received Wrong Product</option>
+                            <option value="change_of_mind">Change of Mind</option>
+                            <option value="better_price_elsewhere">Found a Better Price Elsewhere</option>
+                            <option value="item_defective">Item is Defective</option>
+                            <option value="ordered_by_mistake">Ordered by Mistake</option>
+                            <option value="unsatisfactory_quality">Unsatisfactory Quality</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="customReason">Additional comments (optional):</label>
+                        <textarea class="form-control" id="customReason" name="customReason" rows="3" placeholder="Provide any additional details"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="dismissModal()">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmCancellation">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="modal fade p-t-120 p-b-20" id="cancelReasonModal" tabindex="-1" role="dialog" aria-labelledby="cancelReasonModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  ...
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-primary">Save changes</button>
+		</div>
+	  </div>
+	</div>
+  </div> -->
+
 
 	
 
@@ -694,55 +756,88 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- SweetAlert JS -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function(){
-        $("#cancelorder").click(function (){
-            console.log('clicked');
-            var orderid = $(this).data("id");
-            var data = {
-                id: orderid,
-            };
-            Swal.fire({
-                title: "Are you sure?",
-                text: "This action cannot undone!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes'
-            }).then((result)=>{
-                if(result.isConfirmed){
-                    $.ajax({
-                        url: "/cancelorder",
-                        method: "POST",
-                        data: data,
-                        success: function(response) {
-                            if(response.message == "1"){
-                                Swal.fire({
-                                    title: "Success",
-                                    text: "Order Cancelled",
-                                    icon: "success",
-                                    confirmButtonText: "OK"
-                                }).then((result)=>{
-                                    if(result.isConfirmed){
-                                        window.location.href ="/orders"; // Redirect to another page
-                                    }
-                                });
-                            } else {
-                                Swal.fire({
-                                    title: "Error",
-                                    text: "Something went worng",
-                                    icon: "error",
-                                    confirmButtonText: "OK"
-                                });
+    function dismissModal() {
+        $('#cancelReasonModal').modal('hide');
+    }
+</script>
+
+<script>
+    $(document).ready(function() {
+    var orderid;
+
+    $("#cancelorder").click(function() {
+      console.log('clicked');
+      orderid = $(this).data("id");
+      $("#cancelReasonModal").modal('show');
+    });
+
+	$("#confirmCancellation").click(function() {
+    var selectedReason = $("#cancellationReason").val();
+    var customReason = $("#customReason").val();
+
+    var cancellationReason = selectedReason;
+    if (selectedReason === "custom") {
+        cancellationReason = customReason;
+    }
+	console.log(cancellationReason);
+
+    var data = {
+        id: orderid,
+        reason: cancellationReason
+    };
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "This action cannot be undone!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "/cancelorder",
+                method: "POST",
+                data: data,
+                success: function(response) {
+                    if (response.message == "1") {
+                        Swal.fire({
+                            title: "Success",
+                            text: "Order Cancelled",
+                            icon: "success",
+                            confirmButtonText: "OK"
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = "/orders"; // Redirect to another page
                             }
-                        }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Error",
+                            text: "Something went wrong",
+                            icon: "error",
+                            confirmButtonText: "OK"
+                        });
+                    }
+                },
+                error: function(error) {
+                    console.error(error);
+                    Swal.fire({
+                        title: "Error",
+                        text: "An error occurred while processing your request",
+                        icon: "error",
+                        confirmButtonText: "OK"
                     });
                 }
             });
-        });
+        }
     });
+});
 
     $(document).ready(function(){
         $("#returnorder").click(function (){
@@ -780,7 +875,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             } else {
                                 Swal.fire({
                                     title: "Error",
-                                    text: "Something went worng",
+                                    text: "Cannot return the product after 7 days.",
                                     icon: "error",
                                     confirmButtonText: "OK"
                                 });
@@ -791,6 +886,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             });
         });
     });
+	});
 </script>
 
 

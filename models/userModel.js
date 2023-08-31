@@ -66,6 +66,10 @@ const UserSchema =new mongoose.Schema({
         type: Number,
         required: true
     },
+    createdAt:{
+        type:Date,
+        default:Date.now,
+    },
     isVerified: {
         type:Number,
         default:0
@@ -87,6 +91,8 @@ const UserSchema =new mongoose.Schema({
     }
 
 })
+
+UserSchema.index({ createdAt: 1 }, { expireAfterSeconds: 30 * 60, partialFilterExpression: { isVerified: 0 } });
 
 module.exports = mongoose.model("User",UserSchema)
  
