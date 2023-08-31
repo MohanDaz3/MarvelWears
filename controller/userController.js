@@ -519,7 +519,7 @@ const sendVerifyMail = async (username, email, id) => {
       html:
         "<p>Hi" +" "+
         username +
-        ', Please click here to verify your MarvelWears.com account <a href = "http://52.66.124.99/verify?id=' +
+        ', Please click here to verify your MarvelWears.com account <a href = "http://52.66.124.99//verify?id=' +
         id +
         '">Verifing</a>your mail</p>',
     };
