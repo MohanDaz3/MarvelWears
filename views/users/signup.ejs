@@ -495,6 +495,61 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<i class="zmdi zmdi-chevron-up"></i>
 		</span>
 	</div>
+	<script>
+		// Client-side form validation
+		const form = document.getElementById('signup-form');
+		const emailInput = document.getElementById('email');
+		const passwordInput = document.getElementById('password');
+		const confirmPasswordInput = document.getElementById('cpassword');
+		const agreeTermCheckbox = document.getElementById('agree-term');
+		const nameInput = document.getElementById('name')
+	  
+		form.addEventListener('submit', (event) => {
+		  // validate User Name
+		  if (nameInput.value.length < 3) {
+			event.preventDefault();
+			alert('User name should contain atleast 3 characters long.');
+			return;
+		  }
+	  
+		  // Validate email format
+		  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		  if (!emailRegex.test(emailInput.value)) {
+			event.preventDefault();
+			alert('Please enter a valid email address.');
+			return;
+		  }
+	  
+		  // Validate password length
+		  if (passwordInput.value.length < 6) {
+			event.preventDefault();
+			alert('Password should be atleast 6 characters long.');
+			return;
+		  }
+	  
+		  // Validate password match
+		  if (passwordInput.value !== confirmPasswordInput.value) {
+			event.preventDefault();
+			alert('Passwords does not match.');
+			return;
+		  }
+	  
+		  // Validate checkbox
+		  if (!agreeTermCheckbox.checked) {
+			event.preventDefault();
+			alert('Please agree to the terms of service.');
+			return;
+		  }
+	  
+		  // Submit the form
+		  if(emailRegex.test(emailInput.value) && nameInput.value.length < 3 && passwordInput.value.length > 6 && passwordInput.value === confirmPasswordInput.value && agreeTermCheckbox.checked){
+			form.submit();
+		  }
+		  
+
+		  
+		});
+	  </script>
 
       <!--===============================================================================================-->	
 <script src="/static/vendor/jquery/jquery-3.2.1.min.js"></script>
