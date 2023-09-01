@@ -26,8 +26,9 @@ const isLoggedOut = (req,res,next)=>{
     }
 }
  const isBlocked = async(req,res,next)=>{
+    const user = await user.findOne({_id:req.session.user._id})
     try {
-        const user = await user.findOne({_id:req.session.user._id})
+        
         if(user.block){
             req.session.destroy();
             res.render('home',{noticeAlert:"User Has Been Blocked"})
