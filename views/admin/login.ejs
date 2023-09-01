@@ -48,6 +48,25 @@
 				</form>
 			</div>
 		</div>
-		
+		<% if (locals.notice) { %>
+			<script>
+			  Swal.fire({
+				icon: 'error',
+				title: '<%=notice%>',
+				showConfirmButton: false,
+				timer: 2000
+			  });
+			</script>
+			<% } %> 
+			<% if (locals.Tnotice) { %>
+				<script>
+				  Swal.fire({
+					icon: 'success',
+					title: '<%=Tnotice%>',
+					showConfirmButton: true,
+					timer: 5000
+				  });
+				</script>
+				<% } %> 
 	</body>
 </html>
