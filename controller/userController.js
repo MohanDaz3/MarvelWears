@@ -476,7 +476,7 @@ const loginVerify = async (req, res) => {
             _id:userData._id,
             email:userData.email
           }
-          req.flash("notice", "login successfull");
+          req.flash("notice", "login successfully");
           res.redirect("/");
           
         } else {
@@ -539,7 +539,8 @@ const sendVerifyMail = async (username, email, id) => {
 const verifyMail = async (req, res) => {
   try {
     await User.updateOne({ _id: req.query.id }, { $set: { isVerified: 1 } });
-    res.render("signup", { verification: "Verified your mail id" });
+    req.flash("Tnotice", "verified successfully");
+    res.redirect("/signup");
     
   } catch (error) {
     res.status(404).render("error", { error: error.message });
