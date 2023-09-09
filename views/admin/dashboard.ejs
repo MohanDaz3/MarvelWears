@@ -344,7 +344,14 @@
                                             </div>
                                         </td>
                                         <td><a href="#" class="fw-bold"><%-order._id.toString().slice(-4)%></a> </td>
-                                        <td><%=order.userid%><%=order.userid%></td>
+                                        
+                                        <td>
+                                        <% if (order.userid) { %>
+                                         <%= order.userid.Firstname %> <%= order.userid.Lastname %>
+                                          <% } else { %>
+                                              N/A
+                                          <% } %>
+                                        </td>
                                         <td>
                                             <%=new Date(order.orderdate).toLocaleDateString()%>
                                         </td>
