@@ -261,7 +261,11 @@ color: #ff0000;/* red color */
                                   <td >
                                     <a href="#" class="itemside">
                                       <div class="left">
+                                        <%if(user.image){%>
                                         <img src="/static/uploads/<%=user.image%> " class="img-sm img-avatar" alt="Userpic">
+                                        <%}else{
+                                        <img src="/static/admin/imgs/people/avatar1.jpg " class="img-sm img-avatar" alt="Userpic">
+                                         <%}%>
                                       </div>
                                       <div class="info">
                                         <h6 class="mb-0 title"><%= user.name %></h6>
