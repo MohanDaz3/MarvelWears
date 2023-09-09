@@ -214,7 +214,7 @@ const adminlogin = async(req,res)=>{
             if(req.body.password === adminData.adminkey){
                 req.session.adminid=adminData._id
                 req.session.loggedIn=true
-                res.redirect('/dashboard')
+                res.redirect('/admin/dashboard')
                 
             }else{
                 res.render('login',{notice:"password is inncorrect"})
