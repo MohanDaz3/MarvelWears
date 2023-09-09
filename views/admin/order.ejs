@@ -269,7 +269,11 @@ color: #ff0000;/* red color */
                                              N/A
                                          <% } %>
                                         </b></td>
-                                    <td><%=order.userid.email%></td>
+                                    <td><% if (order.userid) { %>
+                                        <%= order.userid.email %>
+                                         <% } else { %>
+                                             N/A
+                                         <% } %></td>
                                     <td>₹<%=order.totalAmount%>.00</td>
                                     <% if (order.status == "Delivered" || order.status == "Completed") { %>
                                         <td><span class="badge rounded-pill alert-success"><%=order.status%></span></td>
