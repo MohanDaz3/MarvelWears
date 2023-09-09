@@ -262,7 +262,13 @@ color: #ff0000;/* red color */
                             <tbody>
                                 <tr>
                                     <td><%- order._id.toString().slice(-4) %></td>
-                                    <td><b><%=order.userid.Firstname%></b></td>
+                                    <td><b>
+                                    <% if (order.userid) { %>
+                                        <%= order.userid.Firstname %>
+                                         <% } else { %>
+                                             N/A
+                                         <% } %>
+                                        </b></td>
                                     <td><%=order.userid.email%></td>
                                     <td>₹<%=order.totalAmount%>.00</td>
                                     <% if (order.status == "Delivered" || order.status == "Completed") { %>
