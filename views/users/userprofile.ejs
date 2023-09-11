@@ -394,7 +394,12 @@
                                     <aside class="col-lg-4">
                                         <form action="" method="POST" enctype="multipart/form-data" id="profile-image-form">
                                         <figure class="text-lg-center">
-                                            <img class="img-lg mb-3 img-avatar" src="/static/uploads/<%=user.image%>" alt="User Photo">
+                                            <!-- <img class="img-lg mb-3 img-avatar" src="/static/uploads/<%=user.image%>" alt="User Photo"> -->
+											<%if(user.image){%>
+												<img src="/static/uploads/<%=user.image%> " class="img-lg mb-3 img-avatar" alt="Userpic">
+												<%}else{%>
+												<img src="/static/admin/imgs/people/avatar1.jpg " class="img-lg mb-3 img-avatar" alt="Userpic">
+												 <%}%>
                                             <!-- <input class="form-control" name="image" type="file"> -->
                                             <figcaption>
                                                 <label class="btn btn-primary rounded font-md custom-file-upload">
